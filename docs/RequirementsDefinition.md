@@ -1,13 +1,15 @@
-
-
-# Dan’s Frappuccino Paradise Web-App
+# Requirements Definition
 
 ### Introduction and Context
 
 This application will include many essential functions for the success of Dan’s Frappuccino Paradise.  These functions include interfaces for customers, employees, and the shop manager to interact with the shop inventory, financials, and the selling of product.
+
 Customers will be able to purchase their drinks online, or in the store so long as they have an account username and password.  They will also be able to browse preset options or customize their own menu items for easy ordering.
+
 Employees will be able to charge customers and make purchases for them.  They will also be able to adjust shop inventory depending on the drinks that are sold.  Employees will also be responsible for tracking their work hours using this system.  Employees may also access any customer view so they too can enjoy the drinks that they sell.
+
 Managers oversee the paying of employees for their recorded working hours, as well as keeping the shop inventories full.  A manager will also be able to edit any of the menu items to promote the sell of additional beverages.  The manager will also have access to any other views in case they need to cover for an employee, or if they also would like to purchase a drink from the store.
+
 This will all be hosted from a web application for easy access.
 
 ##### Users and their Goals
@@ -52,9 +54,12 @@ This will all be hosted from a web application for easy access.
 ### Non-functional Requirements
 
 - The application must use a database
+  
   - User account information will be stored, including the following: Username, password (encrypted), account balance, favorites, employee hours, account clearance.
   - Shop information will be stored, including the following: Inventory, menu items.
+
 - The team will use Git for version control, with GitHub as a remote repository.
+
 - The application will be hosted via localhost.
   
   **Future Features:** 
