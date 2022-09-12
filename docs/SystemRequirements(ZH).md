@@ -22,11 +22,39 @@ Starbucks is crazy complicated. There's so many different types of coffee that i
 
 We're going to want to make a website for this
 
-- This website would require different account levels
-  - customer
-  - barista
-  - manager
+- This website will have different views for
+  - <u>Customer View</u>:
+    - <u>Login</u> and <u>Sign-up</u> screen
+      - unique usernames
+      - require the user to create a good password
+      - encrypt the passwords
+    - Order drink from <u>Drink Menu</u>:
+      - ability to custom-make drink
+      - subtract inventory on order
+      - Cancel order button?
+        - re-add inventory to drink
+    - ability to add money to account
+    - maintain an order history
+      - "order again" button
+      - "my favorite drink" idea
+    - restrict access to cashier/barista and manager view
+    - pay money for drink
+      - money goes straight to manager
+  - <u>Cashier/Barista View</u>:
+    - create order based on customer's request
+    - take money away from customer account
+    - "order fulfilled" button
+    - time clock/button
+    - allow customer view, restrict access to manager view
+  - <u>Manager View</u>:
+    - pay employees button
+      - add money to employee accounts
+      - take money away from business account
+    - give access to cashier views?
+    - see how much of each ingredient there is remaining in the store
+    - ability to edit <u>Drink Menu</u>:
+      - edit price
+      - add/remove drinks
+    - ability to fire/hire employees
 
 In this class, money is kind of fake. 
-
-
