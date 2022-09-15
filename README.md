@@ -124,7 +124,9 @@ Should result in the shop page.
 <li>(Scrapped) = No longer planning to be a feature</li>
 <li>(Depricated) = Will not be recieving updates, feature is finished and further support will be extremely limited</li>
 </ul>
-<h4>Future Features</h4>
+<hr>
+<h3>Future Features</h3>
+<hr>
 <h5>(Possible) Quick Order Function</h5>
 <p>
 Once a user orders the same drink 3+ times, or presses a "save order" button, a new option is added under thier drop downs for options which will result in the exact settings as thier saved drink.
