@@ -18,23 +18,21 @@ This will all be hosted from a web application for easy access.
 
 ![](../images/UseCaseDiagram1.drawio.png)
 
-
-
 Participating Actor:
 
--  Actor
+- Actor
 
 Entry Conditions:
 
--  condition 1
+- condition 1
 
 Exit Conditions:
 
--  condition 1
+- condition 1
 
 Event Flow:
 
-1)  event 1
+1) event 1
 
 ##### *Figure 2 - Employee submitting timecard*
 
@@ -56,9 +54,188 @@ Event Flow:
 
 1. event 1
 
-
-
 *This section contains identifies of the users of the proposed system and their goals, illustrated and supported by Use Case diagrams.   Here “users” is a board term that could include other software systems.*
+
+The following UML use case diagrams will describe the system's actors and the actors' goals.
+
+*Figure 1 - Customer orders Frappuccino*
+
+![](../images/UseCaseDiagram3.drawio.png)
+
+Participating Actor: Customer
+
+Entry Conditions:
+
+    - Customer wants to purchase a drink.
+
+Exit Conditions:
+
+    - Customer order is fulfilled.
+    - Customer decides not to order drink.
+
+Event Flow:
+
+1. Customer logs on to system.
+2. Customer requests to view drink menu.
+3. System displays available drinks.
+4. Customer inputs their order.
+5. System verifies customer has sufficient funds.
+6. Customer pays for the drink.
+7. System displays purchase confirmation and deducts items from inventory.
+
+*Figure 2 - Employee updates timecard*
+
+![](../images/UseCaseDiagram2.drawio.png)
+
+Participating Actor: Employee
+
+Entry Conditions:
+
+    - Employee wants to input the number of hours they've worked.
+
+Exit Conditions:
+
+    - Employee chooses not to input hours.
+    - Employee's timecard is updated.
+
+Event Flow:
+
+1. Employee views area to update timecard.
+2. Employee inputs hours worked.
+3. System updates employee's total hours worked.
+
+*Figure 3 - Manager pays employees*
+
+![](../images/UseCaseDiagram3.drawio.png)
+
+Participating Actor: Manager
+
+Entry Conditions:
+
+    - Manager wants to pay employees based on hours worked.
+
+Exit Conditions:
+
+    - Employees are successfully paid.
+
+Event Flow:
+
+1. Manager views area where employees can be paid.
+2. Manager pushes button to pay all employees.
+3. Employee timecards are verified.
+4. System ensures sufficient funds are available in manager's account.
+5. System updates each employee's balance, and their timecard is reset to 0 hours.
+
+*Figure 4 - Manager restocks inventory*
+
+![](../images/UseCaseDiagram4.drawio.png)
+
+Participating Actor: Manager
+
+Entry Conditions:
+
+    - Manager wants to purchase additional inventory stock.
+
+Exit Conditions:
+
+    - Manager chooses not to restock.
+    - Inventory is successfully restocked.
+
+Event Flow:
+
+1. Manager views inventory page.
+2. Manager orders items to be restocked.
+3. System ensures sufficient funds are available in the manager's balance.
+4. Manager pays for items.
+5. System updates inventory to include the purchased items
+
+*Figure 5 - Manager adds new drink to menu*
+
+![](../images/UseCaseDiagram5.drawio.png)
+
+Participating Actor: Manager
+
+Entry Conditions:
+
+    - Manager wants to add new menu item.
+
+Exit Conditions:
+
+    - Manager chooses not to add new item.
+    - Drink is added to menu.
+
+Event Flow:
+
+1. Manager logs into their account.
+2. Manager requests to add new drink to menu.
+3. Manager sets cost, ingredients, and image for drink.
+4. System verifies that ingredients listed are possible ingredients.
+5. System adds drink to menu.
+
+*Figure 6 - Customer adds money to their account*
+
+![](../images/UseCaseDiagram6.drawio.png)
+
+Participating Actor: Customer
+
+Entry Conditions:
+
+    - Customer wants to update their account balance.
+
+Exit Conditions:
+
+    - Customer chooses not to add money.
+    - Customer's balance is increased.
+
+Event Flow:
+
+1. Customer logs into their account.
+2. Customer views field to input their desired amount to add.
+3. Customer inputs desired amount.
+4. System increases customer's balance by requested amount.
+
+*Figure 7 - Manager removes item from menu*
+
+![](../images/UseCaseDiagram7.drawio.png)
+
+Participating Actor: Manager
+
+Entry Conditions:
+
+    - Manager wants to remove item from menu.
+
+Exit Conditions:
+
+    - Manager chooses not to remove item.
+    - Manager successfully removes item.
+
+Event Flow:
+
+1. Manager logs into their account.
+2. Manager removes item from menu,
+3. System updates menu to reflect removal of item.
+
+*Figure 8 - Customer creates account*
+
+![](../images/UseCaseDiagram8.drawio.png)
+
+Participating Actor: Customer
+
+Entry Conditions:
+
+    - Customer wants to create account.
+
+Exit Conditions:
+
+    - Customer chooses not to create account.
+    - Customer account is successfully created.
+
+Event Flow:
+
+1. Customer navigates to account creation.
+2. Customer inputs username and password.
+3. System verifies that the input username is unique, has not been used by a previous customer.
+4. System encrypts password and account information is added to database.
 
 ### Functional Requirements
 
