@@ -14,53 +14,13 @@ This will all be hosted from a web application for easy access.
 
 ### Users and their Goals
 
-##### *Figure 1 - Customer Ordering a Drink*
-
-![](../images/UseCaseDiagram1.drawio.png)
-
-Participating Actor:
-
-- Actor
-
-Entry Conditions:
-
-- condition 1
-
-Exit Conditions:
-
-- condition 1
-
-Event Flow:
-
-1) event 1
-
-##### *Figure 2 - Employee submitting timecard*
-
-![](C:\Users\zacha\Zachary-Harrison\Computer%20Science\3450\DansFrappuccinoParadise\images\UseCaseDiagram2.drawio.png)
-
-Participating Actor:
-
-- Actor
-
-Entry Conditions:
-
-- condition 1
-
-Exit Conditions:
-
-- condition 1
-
-Event Flow:
-
-1. event 1
-
 *This section contains identifies of the users of the proposed system and their goals, illustrated and supported by Use Case diagrams.   Here “users” is a board term that could include other software systems.*
 
 The following UML use case diagrams will describe the system's actors and the actors' goals.
 
 *Figure 1 - Customer orders Frappuccino*
 
-![](../images/UseCaseDiagram3.drawio.png)
+![](../images/UseCaseDiagram1.drawio.png)
 
 Participating Actor: Customer
 
