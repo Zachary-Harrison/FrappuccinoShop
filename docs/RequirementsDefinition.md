@@ -245,18 +245,19 @@ Event Flow:
 
 ### Future Features:
 
-<h5>(Possible) Quick Order Function</h5>
-<p>
-Once a user orders the same drink 3+ times, or presses a "save order" button, a new option is added under thier drop downs for options which will result in the exact settings as thier saved drink.
-</p>
-<h5>(Possible) Inventory Smart Tracker</h5>
-<p>
+##### (Possible) Quick Order Function
+
+Once a user orders the same drink 3+ times, or presses a "save order" button, a new option is added under their drop downs for options which will result in the exact settings as their saved drink.
+
+##### (Possible) Inventory Smart Tracker
+
 Based on last month of orders completed, will guess the required amount of materials needed for the next month. Prevents over ordering of drink supplies that are not being used often. Should work more as a trend viewing feature.
-</p>
-<h5>(Possible) Automatic Employee of the Month</h5>
-<p>
+
+##### (Possible) Automatic Employee of the Month
+
 Rewards the employee of the month automatically based on criteria for that month (I.E. Hours worked, orders taken, orders served, etc). Can reward a bonus like bonus pay or a featuring on the webpage.
-</p>
+
+***
 
 ### **Glossary**
 
