@@ -201,7 +201,7 @@ Event Flow:
 
 1. User Authentication and Access
    
-   1.2. The application must require all users to log in with a unique username and password before allowing them to access any views.
+   1.1. The application must require all users to log in with a unique username and password before allowing them to access any views.
    
    1.2. Members can have any of the following access levels: Customer, Employee, Manager
    
@@ -244,7 +244,6 @@ Event Flow:
    4.1. Employees may place an order for a customer from their account when given a customer’s username.
    
    4.2. Employees can see what order needs to be completed next.
-   
       4.2.1. Once an order is completed, and employee can mark the order as complete and remove it from the queue.
    
    4.3. Employees should be able to add to their total hours worked and view how many hours they have worked from the last paycheck.
@@ -266,9 +265,13 @@ Event Flow:
 ### Non-functional Requirements
 
 1. The application must use a database
-   1.1. User account information will be stored, including the following: Username, password (encrypted), account balance, favorites, employee hours, account clearance.
+   
+    1.1. User account information will be stored, including the following: Username, password (encrypted), account balance, favorites, employee hours, account clearance.
+   
    1.2. Shop information will be stored, including the following: Inventory, menu items.
+
 2. The team will use Git for version control, with GitHub as a remote repository.
+
 3. The application will be hosted via localhost.
 
 ### Future Features:
