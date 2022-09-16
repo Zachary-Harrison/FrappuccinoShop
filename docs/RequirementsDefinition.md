@@ -205,11 +205,11 @@ Event Flow:
    
    1.2. Members can have any of the following access levels: Customer, Employee, Manager
    
-      1.2.1. Users with customer clearance should have access to all Customer Features (FR3)
+      &nbsp; 1.2.1. Users with customer clearance should have access to all Customer Features (FR3)
    
-      1.2.2. Users with employee clearance should have access to all Customer and Employee Features (FR3, FR4)
+      &nbsp; 1.2.2. Users with employee clearance should have access to all Customer and Employee Features (FR3, FR4)
    
-      1.2.3. Users with manager clearance should have access to all Features. (FR3, FR4, FR5)
+      &nbsp; 1.2.3. Users with manager clearance should have access to all Features. (FR3, FR4, FR5)
 
 2. User Profile Features
    
@@ -231,13 +231,13 @@ Event Flow:
    
    3.2. The application will allow any customer to create and save their own preferred beverages as “Favorites”.
    
-      3.2.1. These “Favorites” will know any addons needed.
+      &nbsp; 3.2.1. These “Favorites” will know any addons needed.
    
-      3.2.2. Users may customize the names of these custom drinks.
+      &nbsp; 3.2.2. Users may customize the names of these custom drinks.
    
    3.3. The customer can see orders that they have placed which have not been completed.
    
-      3.3.1. The customer may cancel any orders that have not been completed.
+      &nbsp; 3.3.1. The customer may cancel any orders that have not been completed.
 
 4. Employee Profile Features
    
@@ -245,7 +245,7 @@ Event Flow:
    
    4.2. Employees can see what order needs to be completed next.
    
-      4.2.1. Once an order is completed, and employee can mark the order as complete and remove it from the queue.
+      &nbsp; 4.2.1. Once an order is completed, and employee can mark the order as complete and remove it from the queue.
    
    4.3. Employees should be able to add to their total hours worked and view how many hours they have worked from the last paycheck.
 
@@ -255,7 +255,7 @@ Event Flow:
    
    5.2. Managers will be able to see and increase stock by purchasing using money from their account.
    
-      5.2.1. For the purposes of this assignment, the manager can set the price of ingredients.
+      &nbsp; 5.2.1. For the purposes of this assignment, the manager can set the price of ingredients.
    
    5.3. Managers will be able to see all employee work hours and one-click pay all at a fixed rate (>$15.00/hr)
    
