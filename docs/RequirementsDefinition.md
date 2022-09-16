@@ -207,9 +207,9 @@ Event Flow:
     
     - 1.2.1. Users with customer clearance should have access to all Customer Features (FR3)
   
-      - 1.2.2. Users with employee clearance should have access to all Customer and Employee Features (FR3, FR4)
+  - 1.2.2. Users with employee clearance should have access to all Customer and Employee Features (FR3, FR4)
   
-      - 1.2.3. Users with manager clearance should have access to all Features. (FR3, FR4, FR5)
+  - 1.2.3. Users with manager clearance should have access to all Features. (FR3, FR4, FR5)
 
 - 2.User Profile Features
   
