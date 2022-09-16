@@ -199,53 +199,65 @@ Event Flow:
 
 ### Functional Requirements
 
-- User Authentication and Access
-  - The application must require all users to log in with a unique username and password before allowing them to access any views.
-  - Members can have any of the following access levels: Customer, Employee, Manager
-    - Users with customer clearance should have access to all Customer Features (FR3)
-    - Users with employee clearance should have access to all Customer and Employee Features (FR3, FR4)
-    - Users with manager clearance should have access to all Features. (FR3, FR4, FR5)
-- User Profile Features
-  - Any user may modify their own password.
-  - No user may modify their username
-  - Any user except for the manager may delete their account.
-  - Managers are the only level of user that may modify the password or username of another account or delete another account.
-  - Users should be allowed to view and edit their account balance.
-  - No real money is required to increase funds in the account.
-- Customer Features
-  - The application will allow any customers to view and order menu items
-  - The application will allow any customer to create and save their own preferred beverages as “Favorites”.
-    - These “Favorites” will know any addons needed.
-    - Users may customize the names of these custom drinks.
-  - The customer can see orders that they have placed which have not been completed.
-    - The customer may cancel any orders that have not been completed.
-- Employee Profile Features
-  - Employees may place an order for a customer from their account when given a customer’s username.
-  - Employees can see what order needs to be completed next.
-    - Once an order is completed, and employee can mark the order as complete and remove it from the queue.
-  - Employees should be able to add to their total hours worked and view how many hours they have worked from the last paycheck.
-- Manager Profile Features
-  - A manager will be able to view and edit all menu items
-  - Managers will be able to see and increase stock by purchasing using money from their account.
-    - For the purposes of this assignment, the manager can set the price of ingredients.
-  - Managers will be able to see all employee work hours and one-click pay all at a fixed rate (>$15.00/hr)
-  - Managers will be able to edit access and remove employees.
-  - All income will enter the manager’s account and then be paid out for ingredients and employee pay.
+1. User Authentication and Access
+  1. The application must require all users to log in with a unique username and password before allowing them to access any views.
+  2. Members can have any of the following access levels: Customer, Employee, Manager
+    1. Users with customer clearance should have access to all Customer Features (FR3)
+    2. Users with employee clearance should have access to all Customer and Employee Features (FR3, FR4)
+    3. Users with manager clearance should have access to all Features. (FR3, FR4, FR5)
+2. User Profile Features
+  1. Any user may modify their own password.
+  2. No user may modify their username
+  3. Any user except for the manager may delete their account.
+  4. Managers are the only level of user that may modify the password or username of another account or delete another account.
+  5. Users should be allowed to view and edit their account balance.
+  6. No real money is required to increase funds in the account.
+3. Customer Features
+  1. The application will allow any customers to view and order menu items
+  2. The application will allow any customer to create and save their own preferred beverages as “Favorites”.
+    1. These “Favorites” will know any addons needed.
+    2. Users may customize the names of these custom drinks.
+  3. The customer can see orders that they have placed which have not been completed.
+    4. The customer may cancel any orders that have not been completed.
+4. Employee Profile Features
+  1. Employees may place an order for a customer from their account when given a customer’s username.
+  2. Employees can see what order needs to be completed next.
+    1. Once an order is completed, and employee can mark the order as complete and remove it from the queue.
+  3. Employees should be able to add to their total hours worked and view how many hours they have worked from the last paycheck.
+5. Manager Profile Features
+  1. A manager will be able to view and edit all menu items
+  2. Managers will be able to see and increase stock by purchasing using money from their account.
+    1. For the purposes of this assignment, the manager can set the price of ingredients.
+  3. Managers will be able to see all employee work hours and one-click pay all at a fixed rate (>$15.00/hr)
+  4. Managers will be able to edit access and remove employees.
+  5. All income will enter the manager’s account and then be paid out for ingredients and employee pay.
 
 ### Non-functional Requirements
 
-- The application must use a database
+1. The application must use a database
   
-  - User account information will be stored, including the following: Username, password (encrypted), account balance, favorites, employee hours, account clearance.
-  - Shop information will be stored, including the following: Inventory, menu items.
+  1. User account information will be stored, including the following: Username, password (encrypted), account balance, favorites, employee hours, account clearance.
+  2. Shop information will be stored, including the following: Inventory, menu items.
 
-- The team will use Git for version control, with GitHub as a remote repository.
+2. The team will use Git for version control, with GitHub as a remote repository.
 
-- The application will be hosted via localhost.
+3. The application will be hosted via localhost.
   
-  **Future Features:** 
+
+### Future Features:
   
-  *This section contains a list of ideas or features that are beyond the scope of the project.*
+<h5>(Possible) Quick Order Function</h5>
+<p>
+Once a user orders the same drink 3+ times, or presses a "save order" button, a new option is added under thier drop downs for options which will result in the exact settings as thier saved drink.
+</p>
+<h5>(Possible) Inventory Smart Tracker</h5>
+<p>
+Based on last month of orders completed, will guess the required amount of materials needed for the next month. Prevents over ordering of drink supplies that are not being used often. Should work more as a trend viewing feature.
+</p>
+<h5>(Possible) Automatic Employee of the Month</h5>
+<p>
+Rewards the employee of the month automatically based on criteria for that month (I.E. Hours worked, orders taken, orders served, etc). Can reward a bonus like bonus pay or a featuring on the webpage.
+</p>
 
 ### **Glossary**
 
