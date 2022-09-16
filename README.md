@@ -128,5 +128,5 @@ Should result in the shop page.
 <h4> Deliverables - Milestone 1
 
 - [Project Plan](/docs/ProjectPlan.md)
-- [Requirements Definition](/docs/RequriementsDefinition.md)
+- [Requirements Definition](/docs/RequirementsDefinition.md)
 
