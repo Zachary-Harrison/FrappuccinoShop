@@ -200,19 +200,19 @@ Event Flow:
 ### Functional Requirements
 
 1. User Authentication and Access
-
+   
    1.2. The application must require all users to log in with a unique username and password before allowing them to access any views.
    
    1.2. Members can have any of the following access levels: Customer, Employee, Manager
    
       1.2.1. Users with customer clearance should have access to all Customer Features (FR3)
-      
+   
       1.2.2. Users with employee clearance should have access to all Customer and Employee Features (FR3, FR4)
-      
+   
       1.2.3. Users with manager clearance should have access to all Features. (FR3, FR4, FR5)
-      
-2. User Profile Features
 
+2. User Profile Features
+   
    2.1. Any user may modify their own password.
    
    2.2. No user may modify their username
@@ -224,45 +224,44 @@ Event Flow:
    2.5. Users should be allowed to view and edit their account balance.
    
    2.6. No real money is required to increase funds in the account.
-   
-3. Customer Features
 
+3. Customer Features
+   
    3.1. The application will allow any customers to view and order menu items
    
    3.2. The application will allow any customer to create and save their own preferred beverages as “Favorites”.
    
       3.2.1. These “Favorites” will know any addons needed.
-      
+   
       3.2.2. Users may customize the names of these custom drinks.
-      
+   
    3.3. The customer can see orders that they have placed which have not been completed.
    
       3.3.1. The customer may cancel any orders that have not been completed.
-      
-4. Employee Profile Features
 
+4. Employee Profile Features
+   
    4.1. Employees may place an order for a customer from their account when given a customer’s username.
    
    4.2. Employees can see what order needs to be completed next.
    
       4.2.1. Once an order is completed, and employee can mark the order as complete and remove it from the queue.
-      
-   4.3. Employees should be able to add to their total hours worked and view how many hours they have worked from the last paycheck.
    
-5. Manager Profile Features
+   4.3. Employees should be able to add to their total hours worked and view how many hours they have worked from the last paycheck.
 
+5. Manager Profile Features
+   
    5.1. A manager will be able to view and edit all menu items
    
    5.2. Managers will be able to see and increase stock by purchasing using money from their account.
    
       5.2.1. For the purposes of this assignment, the manager can set the price of ingredients.
-      
+   
    5.3. Managers will be able to see all employee work hours and one-click pay all at a fixed rate (>$15.00/hr)
    
    5.4. Managers will be able to edit access and remove employees.
    
    5.5. All income will enter the manager’s account and then be paid out for ingredients and employee pay.
-
 
 ### Non-functional Requirements
 
