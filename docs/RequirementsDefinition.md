@@ -234,14 +234,14 @@ Event Flow:
 
 ### Non-functional Requirements
 
-- The application must use a database
+1. The application must use a database
   
-  - User account information will be stored, including the following: Username, password (encrypted), account balance, favorites, employee hours, account clearance.
-  - Shop information will be stored, including the following: Inventory, menu items.
+  1. User account information will be stored, including the following: Username, password (encrypted), account balance, favorites, employee hours, account clearance.
+  2. Shop information will be stored, including the following: Inventory, menu items.
 
-- The team will use Git for version control, with GitHub as a remote repository.
+2. The team will use Git for version control, with GitHub as a remote repository.
 
-- The application will be hosted via localhost.
+3. The application will be hosted via localhost.
   
 
 ### Future Features:
