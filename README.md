@@ -125,3 +125,8 @@ Should result in the shop page.
 <li>(Depricated) = Will not be recieving updates, feature is finished and further support will be extremely limited</li>
 </ul>
 
+<h4> Deliverables - Milestone 1
+
+- [Project Plan] (/docs/ProjectPlan.md)
+- [Requirements Definition] (/docs/RequriementsDefinition.md)
+
