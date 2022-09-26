@@ -101,8 +101,6 @@ This will test payroll functionality in several steps including deducting payrol
 
 ### System Testing Instructions
 
-***
-
 <hr>
 <h4>Test if server is on correct port and open</h4>
 <h5>Linux and MacOS
