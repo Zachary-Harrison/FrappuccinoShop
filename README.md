@@ -30,7 +30,6 @@ Commit messages should be clear to assist in task control.
 <hr>
 Django - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Automates webserving, database handling, encryption, and more. See install instructions below in "Build Instructions".
 </br>
-</br>
 
 Python3 - Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming. Most team members are familiar with Python and it is very effective for background processes. Download Python 3 here https://www.python.org/downloads/.
 </br>
@@ -60,6 +59,8 @@ Run the server using the following command. (3000 is port, this is changable)
 
 In a web browser, navigate to http://localhost:3000/shop_app to view the app.
 3000 may be replaced with any port you wish to host the webserver on.
+
+<h3> Unit Testing </h3>
 
 #### Testing making a new order:
 
@@ -101,7 +102,6 @@ This will test payroll functionality in several steps including deducting payrol
 
 ***
 
-<h3>System Testing Instructions</h3>
 <hr>
 <h4>Test if server is on correct port and open</h4>
 <h5>Linux and MacOS
