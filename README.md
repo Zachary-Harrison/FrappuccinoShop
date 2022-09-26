@@ -61,7 +61,7 @@ In a web browser, navigate to http://localhost:3000/shop_app to view the app.
 3000 may be replaced with any port you wish to host the webserver on.
 
 <h3> Unit Testing </h3>
-<br>
+<hr>
 
 #### Testing making a new order:
 
