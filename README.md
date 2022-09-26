@@ -26,6 +26,22 @@ Collaborators must fork the repository found at Zachary-Harrison/cs3450-group10.
 The forked repository must then be cloned.  After completing any work, collaborators
 should submit a pull request so that all progress is documented and issues may be discussed.
 Commit messages should be clear to assist in task control.
+<<<<<<< HEAD
+<h3>Tool Stack Description and Setup Procedure</h3>
+<hr>
+Django - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Automates webserving, database handling, encryption, and more. See install instructions below in "Build Instructions".
+
+Python3 - Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming. Most team members are familiar with Python and it is very effective for background processes. Download Python 3 here https://www.python.org/downloads/.
+
+JavaScript - JavaScript is a scripting or programming language that allows you to implement complex features on web pages displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. This will assist in making the site aesthetically pleasing and provide
+some additional functionality.
+<h3>Build Instructions - Linux and MacOS</h3>
+<hr>
+Download Python 3 here :
+https://www.python.org/downloads/
+
+Clone the project.
+=======
 
 ### Tool Stack Description and Setup Procedure
 
@@ -41,6 +57,7 @@ Commit messages should be clear to assist in task control.
 ***
 
 Clone the project in Git Bash.
+>>>>>>> 881b5d5d3e7cdac96289d8400cd6f6d6dd519372
 
 > bash $ git clone https://github.com/Zachary-Harrison/cs3450-group10
 
@@ -52,11 +69,12 @@ Navigate to the project sub-folder.
 
 > bash $ cd app/cs3450_group10
 
-Run the server using the following command.
+Run the server using the following command. (3000 is port, this is changable)
 
 > bash $ python3 manage.py runserver 3000
 
 In a web browser, navigate to http://localhost:3000/shop_app to view the app.
+3000 may be replaced with any port you wish to host the webserver on.
 
 ### Unit Testing Instructions
 
@@ -104,7 +122,14 @@ This will test payroll functionality in several steps including deducting payrol
 
 #### Test if server is on correct port and open
 
+<<<<<<< HEAD
+<h3>System Testing Instructions</h3>
+<hr>
+<h4>Test if server is on correct port and open</h4>
+<h5>Linux and MacOS
+=======
 Linux
+>>>>>>> 881b5d5d3e7cdac96289d8400cd6f6d6dd519372
 
 > bash $ sudo ss -tnlp || grep -m 1 -w -F '127.0.0.1:3000'
 
