@@ -20,7 +20,7 @@ The following UML use case diagrams will describe the system's actors and the ac
 
 *Figure 1 - Customer orders Frappuccino*
 
-![](../images/UseCaseDiagram1.drawio.png)
+![](../images/UseCaseDiagrams/OrderDrink.drawio.png)
 
 Participating Actor: Customer
 
@@ -45,7 +45,7 @@ Event Flow:
 
 *Figure 2 - Employee updates timecard*
 
-![](../images/UseCaseDiagram2.drawio.png)
+![](../images/UseCaseDiagrams/SubmitTimecard.drawio.png)
 
 Participating Actor: Employee
 
@@ -66,7 +66,7 @@ Event Flow:
 
 *Figure 3 - Manager pays employees*
 
-![](../images/UseCaseDiagram3.drawio.png)
+![](../images/UseCaseDiagrams/PayEmployees.drawio.png)
 
 Participating Actor: Manager
 
@@ -88,7 +88,7 @@ Event Flow:
 
 *Figure 4 - Manager restocks inventory*
 
-![](../images/UseCaseDiagram4.drawio.png)
+![](../images/UseCaseDiagrams/RestockInventory.drawio.png)
 
 Participating Actor: Manager
 
@@ -111,7 +111,7 @@ Event Flow:
 
 *Figure 5 - Manager adds new drink to menu*
 
-![](../images/UseCaseDiagram5.drawio.png)
+![](../images/UseCaseDiagrams/AddDrink.drawio.png)
 
 Participating Actor: Manager
 
@@ -134,7 +134,7 @@ Event Flow:
 
 *Figure 6 - Customer adds money to their account*
 
-![](../images/UseCaseDiagram6.drawio.png)
+![](../images/UseCaseDiagrams/AddMoney.drawio.png)
 
 Participating Actor: Customer
 
@@ -156,7 +156,7 @@ Event Flow:
 
 *Figure 7 - Manager removes item from menu*
 
-![](../images/UseCaseDiagram7.drawio.png)
+![](../images/UseCaseDiagrams/RemoveDrink.drawio.png)
 
 Participating Actor: Manager
 
@@ -177,7 +177,7 @@ Event Flow:
 
 *Figure 8 - Customer creates account*
 
-![](../images/UseCaseDiagram8.drawio.png)
+![](../images/UseCaseDiagrams/CreateAccount.drawio.png)
 
 Participating Actor: Customer
 

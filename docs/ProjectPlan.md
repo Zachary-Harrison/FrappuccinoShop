@@ -37,20 +37,20 @@ We will use Unified Modeling Language (UML) to document user goals, structural c
 ### Risk Analysis
 
 - Database Structure
-    - Likelihood – Low
-    - Severity – Very High
-    - Consequences –  Menu items and/or prices improperly displayed. Money cannot be accurately added or removed to the accounts of any employee, customer, or manager.
-    - Work-Around – None. System cannot properly function as a frappuccino shop should the frappuccino menu not work or the monetary aspect fail to function. 
+  - Likelihood – Low
+  - Severity – Very High
+  - Consequences –  Menu items and/or prices improperly displayed. Money cannot be accurately added or removed to the accounts of any employee, customer, or manager.
+  - Work-Around – None. System cannot properly function as a frappuccino shop should the frappuccino menu not work or the monetary aspect fail to function. 
 - Login
-    - Likelihood – Low
-    - Severity – Med-High
-    - Consequences – Customers cannot use their balance to pay for drinks or save a drink to their account, employees cannot fulfill orders or track their time worked, manager cannot pay employees or order ingredients.
-    - Work-Around – Customers do not need to be logged in to order drinks. None for employees or manager.
+  - Likelihood – Low
+  - Severity – Med-High
+  - Consequences – Customers cannot use their balance to pay for drinks or save a drink to their account, employees cannot fulfill orders or track their time worked, manager cannot pay employees or order ingredients.
+  - Work-Around – Customers do not need to be logged in to order drinks. None for employees or manager.
 - UI
-    - Likelihood –  Low
-    - Severity – Very High
-    - Consequences – Inability to interact with users in a clear and efficient way.
-    - Work-Around – None. System loses value and functionality if users are not able to
+  - Likelihood –  Low
+  - Severity – Very High
+  - Consequences – Inability to interact with users in a clear and efficient way.
+  - Work-Around – None. System loses value and functionality if users are not able to
     interact with it.
 
 ### Configuration Management
