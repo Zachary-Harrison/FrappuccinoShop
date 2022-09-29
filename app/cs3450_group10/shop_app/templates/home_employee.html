@@ -10,13 +10,15 @@
         <div class="navigation_top">
             <ul>
 				<li><a href="{% url 'home_general' %}">Log Off</a></li>
-				<li><a href="{% url 'home_customer' %}">About</a></li>
-                <li><a href="{% url 'account' %}" class="active">Settings</a></li>
-                <li><a href="{% url 'menu' %}">Menu</a></li>
-
+				<li><a href="{% url 'home_employee' %}" class="active">About</a></li>
+                <li><a href="{% url 'account_employee' %}">Settings</a></li>
+                <li><a href="{% url 'menu_employee' %}">Menu</a></li>
+                <li><a href="{% url 'cashier_employee' %}">Cash Register</a></li>
 			</ul>
         </div>
+
+        <h4>Welcome To</h4>
         <h1>Dan's Frappuccino Paradise</h1>
-        <h4>Welcome</h4>
+        <p>Employee Home</p>
     </body>
 </html>
