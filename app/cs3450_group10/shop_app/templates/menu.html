@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="../static/style.css" type = "text/css"/>
+        <title>Dan's Frap. Paradise</title>
+    </head>
+
+    <body>
+        <div class="navigation_top">
+            <ul>
+				<li><a href="{% url 'home_general' %}">Log Off</a></li>
+				<li><a href="{% url 'home_customer' %}">About</a></li>
+                <li><a href="{% url 'account' %}">Settings</a></li>
+                <li><a href="{% url 'menu' %}" class="active">Menu</a></li>
+			</ul>
+        </div>
+        <h1>Dan's Frappuccino Paradise</h1>
+        <h4>Welcome</h4>
+    </body>
+</html>
