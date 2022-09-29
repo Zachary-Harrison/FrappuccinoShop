@@ -30,25 +30,30 @@ body {
     background-color: slateblue;
 }
 
-.button {
+.button_list ul {
+    list-style-type: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    overflow: hidden;
     background-color: #333;
-    font-size: 30pt;
+    width: 50%;
+}
+
+.button_list li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    width: 50%;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 
-.button:hover {
-    background-color: slateblue;
+.button_list li a:hover {
+    background-color: #111;
+}
+
+.center_container {
+    text-align: center;
 }
 
 h1 {

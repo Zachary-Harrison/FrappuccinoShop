@@ -2,19 +2,21 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="../static/style.css" type = "text/css"/>
+        <link rel="stylesheet" href="../static/style.css?{% now 'U' %}" type = "text/css"/>
         <title>Dan's Frap. Paradise</title>
     </head>
 
     <body>
         <div class="navigation_top">
             <ul>
-				<li><a href="{% url 'logon' %}">Login</a></li>
+				<li><a href="{% url 'logon_page' %}">Login</a></li>
 				<li><a href="{% url 'home_general' %}" class="active">About</a></li>
 			</ul>
         </div>
 
+        <h4>Welcome To</h4>
         <h1>Dan's Frappuccino Paradise</h1>
-        <h4>Welcome</h4>
+        <p>General Home Page</p>
+        <p>This page will provide general information about the shop and encourage people to create an account.</p> 
     </body>
 </html>
