@@ -134,6 +134,8 @@ Should result in the shop page.
 - [Project Plan](docs/ProjectPlan.md)
 - [Requirements Definition](docs/RequirementsDefinition.md)
 - [Low Fidelity Prototype](docs/LowFidelityProtoInstructions.md)
+- [High Fidelity Prototype](docs/HighFidelityProtoInstructions.md)
+
 
 ***
 
