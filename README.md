@@ -51,6 +51,14 @@ Install Django via pip3
 
 Install psycopg2
 
+For Ubuntu servers, first run
+
+> bash $ sudo apt install libpq-dev postgresql
+
+then continue.
+
+For MacOS start here
+
 > bash $ sudo pip3 install psycopg2
 
 > bash $ sudo pip3 install psycopg2-binary
