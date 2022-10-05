@@ -52,6 +52,7 @@ Install Django via pip3
 Install psycopg2
 
 > bash $ sudo pip3 install psycopg2
+
 > bash $ sudo pip3 install psycopg2-binary
 
 Navigate to the project sub-folder. 
