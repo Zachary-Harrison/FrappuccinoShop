@@ -17,13 +17,28 @@
         <h1>Dan's Frappuccino Paradise</h1>
         <h4>Log In</h4>
         <div class="center_container">
-            <div class="button_list">
-                <ul>
-                    <li><a href="{% url 'home_customer' %}"> Log In As Customer</a></li>
-                    <li><a href="{% url 'home_employee' %}"> Log In As Employee</a></li>
-                    <li><a href="{% url 'home_manager' %}"> Log In As Manager</a></li>
-                </ul>
-            </div>  
+            
+
+                    <form method="POST" actions="">
+                        {% csrf_token %}
+                        
+                        <div>
+                            <input type="text" name="username" placeholder="Username">
+                            <br>
+                            <input type="text" name="password" placeholder="Password">
+                            <br>
+                            <input type="submit" value="Login">
+                        </div>
+
+
+
+                        {{form.errors}}
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                        
+                    </form>
+             
         </div>
     </body>
 </html>
