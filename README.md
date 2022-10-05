@@ -49,6 +49,11 @@ Install Django via pip3
 
 > bash $ sudo pip3 install django
 
+Install psycopg2
+
+> bash $ sudo pip3 install psycopg2
+> bash $ sudo pip3 install psycopg2-binary
+
 Navigate to the project sub-folder. 
 
 > bash $ cd app/cs3450_group10
