@@ -20,13 +20,26 @@
         <h1>Dan's Frappuccino Paradise</h1>
         <h4>Register a New Account</h4>
         <div class="center_container">
-            <div class="button_list">
+            <div>
                 
                     <h3>Register</h3>
 
                     <form method="POST" actions="">
                         {% csrf_token %}
-                        {{form.as_p}}
+                        {{form.username.label}}
+                        {{form.username}}
+                        <br>
+                        {{form.email.label}}
+                        {{form.email}}
+                        <br>
+                        {{form.password1.label}}
+                        {{form.password1}}
+                        <br>
+                        {{form.password2.label}}
+                        {{form.password2}}
+                        <br>
+
+
                         <input type="submit" name="Create User">
                     </form>
                 

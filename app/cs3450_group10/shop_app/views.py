@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
 
 # Create your views here.
 def home_general(request):
@@ -70,10 +71,10 @@ def pay_page_manager(request):
 
 
 def registerPage(request):
-    form = UserCreationForm()
+    form = CreateUserForm()
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
 
