@@ -1,6 +1,8 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 def home_general(request):
@@ -64,3 +66,17 @@ def stock_manager(request):
 def pay_page_manager(request):
     template = loader.get_template('pay_page_manager.html')
     return HttpResponse(template.render())
+
+
+
+def registerPage(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+
+    context = {'form':form}
+    return render(request, 'register.html', context)
