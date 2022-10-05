@@ -162,3 +162,4 @@ Should result in the shop page.
 - (Under Development) = Is currently undergoing development
 - (Scrapped) = No longer planning to be a feature
 - (Deprecated) = Will not be receiving updates, feature is finished and further support will be extremely limited
+
