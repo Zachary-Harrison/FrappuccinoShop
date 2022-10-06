@@ -23,11 +23,19 @@
                         {% csrf_token %}
                         
                         <div>
-                            <input type="text" name="username" placeholder="Username">
-                            <br>
-                            <input type="text" name="password" placeholder="Password">
-                            <br>
-                            <input type="submit" value="Login">
+                            <div>
+                                <div class="form_row">
+                                    <div class="label">Username</div>
+                                    <div class="input_box"><input type="text" name="username"></div>
+                                </div>
+                                <br>
+                                <div class="form_row">
+                                    <div class="label">Password</div>
+                                    <div class="input_box"><input type="text" name="password"></div>
+                                </div>
+                                <br>
+                                <input type="submit" value="Login">
+                            </div>
                         </div>
 
 
