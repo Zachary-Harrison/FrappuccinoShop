@@ -13,7 +13,8 @@
     <body>
         <div class="navigation_top">
             <ul>
-				<li><a href="{% url 'logon_page' %}" class="active">Login</a></li>
+				<li><a href="{% url 'logon_page' %}">Login</a></li>
+                <li><a href="{% url 'register' %}"  class="active">Register</a></li>
 				<li><a href="{% url 'home_general' %}">About</a></li>
 			</ul>
         </div>
@@ -21,27 +22,34 @@
         <h4>Register a New Account</h4>
         <div class="center_container">
             <div>
-                
-                    <h3>Register</h3>
+                <h3>Register</h3>
 
-                    <form method="POST" actions="">
-                        {% csrf_token %}
-                        {{form.username.label}}
-                        {{form.username}}
-                        <br>
-                        {{form.email.label}}
-                        {{form.email}}
-                        <br>
-                        {{form.password1.label}}
-                        {{form.password1}}
-                        <br>
-                        {{form.password2.label}}
-                        {{form.password2}}
-                        <br>
-
-                        {{form.errors}}
-                        <input type="submit" name="Create User">
-                    </form>
+                <form method="POST" actions="" class="input">
+                    {% csrf_token %}
+                    <div class="form_row">
+                        <div class="label">{{form.username.label}}</div>
+                        <div class="input_box">{{form.username}}</div>
+                    </div>
+                    <br>
+                    <div class="form_row">
+                        <div class="label">{{form.email.label}}</div>
+                        <div class="input_box">{{form.email}}</div>
+                    </div>
+                    <br>
+                    <div class="form_row">
+                        <div class="label">{{form.password1.label}}</div>
+                        <div class="input_box">{{form.password1}}</div>
+                    </div>
+                    <br>
+                    <div class="form_row">
+                        <div class="label">{{form.password2.label}}</div>
+                        <div class="input_box">{{form.password2}}</div>
+                    </div>
+                    <br>
+                    <br>
+                    {{form.errors}}
+                    <input type="submit" name="Create User">
+                </form>
                 
             </div>  
         </div>
