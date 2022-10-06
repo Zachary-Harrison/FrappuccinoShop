@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,35 +14,36 @@
         <div class="navigation_top">
             <ul>
 				<li><a href="{% url 'logon_page' %}" class="active">Login</a></li>
-                <li><a href="{% url 'register' %}">Register</a></li>
 				<li><a href="{% url 'home_general' %}">About</a></li>
 			</ul>
         </div>
         <h1>Dan's Frappuccino Paradise</h1>
-        <h4>Log In</h4>
+        <h4>Register a New Account</h4>
         <div class="center_container">
-            
+            <div>
+                
+                    <h3>Register</h3>
 
                     <form method="POST" actions="">
                         {% csrf_token %}
-                        
-                        <div>
-                            <input type="text" name="username" placeholder="Username">
-                            <br>
-                            <input type="text" name="password" placeholder="Password">
-                            <br>
-                            <input type="submit" value="Login">
-                        </div>
-
-
+                        {{form.username.label}}
+                        {{form.username}}
+                        <br>
+                        {{form.email.label}}
+                        {{form.email}}
+                        <br>
+                        {{form.password1.label}}
+                        {{form.password1}}
+                        <br>
+                        {{form.password2.label}}
+                        {{form.password2}}
+                        <br>
 
                         {{form.errors}}
-                        {% for message in messages %}
-                        <p>{{message}}</p>
-                        {% endfor %}
-                        
+                        <input type="submit" name="Create User">
                     </form>
-             
+                
+            </div>  
         </div>
     </body>
 </html>

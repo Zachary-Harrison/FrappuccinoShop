@@ -18,4 +18,7 @@ urlpatterns = [
     path('cashier_manager', views.cashier_manager, name="cashier_manager"),
     path('stock_manager', views.stock_manager, name="stock_manager"),
     path('pay_page_manager', views.pay_page_manager, name="pay_page_manager"),
+
+    path('logout', views.logoutUser, name='logout'),
+    path('register', views.registerPage, name="register"),
 ]
