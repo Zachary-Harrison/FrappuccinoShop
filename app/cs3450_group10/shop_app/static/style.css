@@ -60,6 +60,10 @@ body {
     text-align: left;
 }
 
+.right_container {
+    text-align: right;
+}
+
 h1 {
     font-size: 40pt;
     padding: 0;
@@ -83,23 +87,24 @@ h4 {
 }
 
 .label {
-    float: left;
-    padding-left: 38%;
+    display: inline;
+    padding-right: 50px;
 }
 
 .input_box {
-    float: right;
-    padding-right: 38%
+    display: inline;
+    padding-right: 37%;
 }
 
 input {
-    border: 2px solid #aaa;
+    border: 2px solid #a9a9a9;
 }
 
 input[type=submit] {
     width: 10%;
     font-size: 14pt;
     margin: 15px;
+    margin-right: 45%;
 }
 
 input[type=submit]:hover {
