@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
 
 
@@ -6,15 +7,14 @@ from django.contrib.postgres.fields import ArrayField
 # are the returned hash from Django's password encryption capabilities. A user's actual password is not stored in the
 # database.
 
-class User(models.Model):
+class Account(models.Model):
     # Use Django's supported version of an Enum
     class Type(models.TextChoices):
         CUSTOMER = 'Customer'
         EMPLOYEE = 'Employee'
         MANAGER = 'Manager'
 
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     balance = models.DecimalField(max_digits=14, decimal_places=2)
     user_type = models.CharField(
         max_length=8,
