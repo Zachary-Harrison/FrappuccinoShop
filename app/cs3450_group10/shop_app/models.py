@@ -23,7 +23,7 @@ class Account(models.Model):
     )
 
     def __str__(self):
-        return self.username
+        return self.user.username
 
     def get_user_type(self):
         return self.UserType(self.user_type)

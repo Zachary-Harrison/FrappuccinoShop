@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from shop_app.models import Account
+from django.contrib.auth.models import User
 
 from .forms import CreateUserForm
 
@@ -15,17 +17,29 @@ def home_general(request):
 
 
 def home_customer(request):
-    template = loader.get_template('home_customer.html')
-    return HttpResponse(template.render())
+    accounts = Account.objects.all()
+    current_account = None
+    for account in accounts:
+        if account.user == request.user:
+            current_account = account
+    return render(request, 'home_customer.html', {'account': current_account})
 
 
 def home_employee(request):
-    template = loader.get_template('home_employee.html')
-    return HttpResponse(template.render())
+    accounts = Account.objects.all()
+    current_account = None
+    for account in accounts:
+        if account.user == request.user:
+            current_account = account
+    return render(request, 'home_employee.html', {'account': current_account})
     
 def home_manager(request):
-    template = loader.get_template('home_manager.html')
-    return HttpResponse(template.render())
+    accounts = Account.objects.all()
+    current_account = None
+    for account in accounts:
+        if account.user == request.user:
+            current_account = account
+    return render(request, 'home_manager.html', {'account': current_account})
 
 
 def account_customer(request):
@@ -74,12 +88,23 @@ def logon_page(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-
+        
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
-            return redirect('home_general')
+            accounts = Account.objects.all()
+            account = None
+            for temp in accounts: 
+                if temp.user == user:        
+                    account = temp
+            if account.user_type == 'Manager':
+                return redirect('home_manager')
+            elif account.user_type == 'Employee':
+                return redirect('home_employee')
+            else:
+                return redirect('home_customer')
+
         else:
             messages.info(request, 'Login Credentials are Incorrect')
             return redirect('logon_page')
@@ -97,8 +122,16 @@ def registerPage(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for ' + user)
+            username = form.cleaned_data.get('username')
+            messages.success(request, 'Account was created for ' + username)
+            userlist = User.objects.all()
+            for temp in userlist:
+                if temp.username == username:
+                    user = temp
+            account = Account()
+            account.user = user
+            account.balance = 0.0
+            account.save()
             return redirect('logon_page')
 
 
