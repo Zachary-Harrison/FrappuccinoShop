@@ -17,11 +17,13 @@ def generate_csrf_token():
 url = 'http://127.0.0.1:3000/shop_app/register'
 payload = {
     'csrfmiddlewaretoken': generate_csrf_token(),
-    'username': 'Unit Test User',
+    'username': 'UnitTestUser',
     'password1': 'thisIsaNewPasswordTest!1',
     'password2': 'thisIsaNewPasswordTest!1',
-    'Create+User': 'SUbmit+Query'
+    'Create+User': 'Submit+Query'
 }
+
+print(requests.get(url))
 
 x = requests.post(url, payload)
 print(x)
