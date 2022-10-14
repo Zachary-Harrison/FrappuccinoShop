@@ -2,14 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="../static/style.css" type = "text/css"/>
+        <link rel="stylesheet" href="../static/style.css?{% now 'U' %}" type = "text/css"/>
         <title>Dan's Frap. Paradise</title>
     </head>
 
     <body>
         <div class="navigation_top">
             <ul>
-				<li><a href="{% url 'home_general' %}">Log Off</a></li>
+				<li><a href="{% url 'logout_user' %}">Log Off</a></li>
 				<li><a href="{% url 'home_customer' %}">About</a></li>
                 <li><a href="{% url 'account_customer' %}">Settings</a></li>
                 <li><a href="{% url 'menu_customer' %}" class="active">Menu</a></li>
@@ -17,6 +17,14 @@
         </div>
         <h1>Dan's Frappuccino Paradise</h1>
         <h4>Menu</h4>
-        <p>Customer Menu</p>
+        <div class="menu_container">
+            {% for drink in drinks %}
+            <div class="drink_container">
+                {{ drink }}
+                <br><br>
+                <img class="display_image" src="{{ drink.image }}">
+            </div>
+            {% endfor %}
+        </div>
     </body>
 </html>

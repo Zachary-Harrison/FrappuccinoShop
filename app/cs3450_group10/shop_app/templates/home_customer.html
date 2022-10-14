@@ -2,14 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="../static/style.css" type = "text/css"/>
+        <link rel="stylesheet" href="../static/style.css?{% now 'U' %}" type = "text/css"/>
         <title>Dan's Frap. Paradise</title>
     </head>
 
     <body>
         <div class="navigation_top">
             <ul>
-				<li><a href="{% url 'home_general' %}">Log Off</a></li>
+				<li><a href="{% url 'logout_user' %}">Log Off</a></li>
 				<li><a href="{% url 'home_customer' %}" class="active">About</a></li>
                 <li><a href="{% url 'account_customer' %}">Settings</a></li>
                 <li><a href="{% url 'menu_customer' %}">Menu</a></li>
@@ -19,6 +19,26 @@
         <h4>Welcome To</h4>
         <h1>Dan's Frappuccino Paradise</h1>
         <h4>Hello {{ account.user.username }}</h4>
-        <p>Customer Home</p>
+        <div class="info_container">
+            <h4> About Us </h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                Reprehenderit est dolore ex nihil, alias ipsum corporis 
+                autem in fuga sequi quod, voluptas dignissimos tenetur 
+                harum quisquam officia? Dolores tempore neque sequi 
+                aliquid placeat ducimus mollitia atque consectetur ratione, 
+                temporibus necessitatibus obcaecati non quia exercitationem? 
+                Ratione accusamus rerum vitae necessitatibus libero quisquam 
+                optio nulla, quidem error eum corporis. Quisquam tempora reprehenderit 
+                qui quia fugit aut totam necessitatibus animi, tempore ad, optio sed, 
+                earum ipsa enim vitae assumenda mollitia possimus? Explicabo magnam quia maxime, 
+                molestiae voluptate ipsam ipsa ut reiciendis nemo, architecto impedit reprehenderit 
+                eveniet vero doloribus quaerat laboriosam, quod cum placeat eaque odio? Fuga ipsa 
+                doloribus reprehenderit quae culpa nisi quibusdam omnis, voluptatibus aperiam corrupti 
+                ullam vel saepe repellendus, eligendi perspiciatis placeat quas veritatis tempora nulla? 
+                Repellendus dolore dicta, mollitia maiores, vitae dignissimos ullam qui assumenda vero0 
+                reiciendis facilis quaerat impedit, rerum accusamus? Suscipit omnis, eos nemo 
+                doloribus saepe obcaecati neque.</p>
+        </div> 
+
     </body>
 </html>

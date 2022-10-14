@@ -16,35 +16,23 @@
         </div>
         <h1>Dan's Frappuccino Paradise</h1>
         <h4>Log In</h4>
-        <div class="right_container">
-                    <form method="POST" actions="">
-                        {% csrf_token %}
-                        
-                        <div>
-                            <div>
-                                <div class="form_row">
-                                    <div class="label">Username</div>
-                                    <div class="input_box"><input type="text" name="username"></div>
-                                </div>
-                                <br>
-                                <div class="form_row">
-                                    <div class="label">Password</div>
-                                    <div class="input_box"><input type="text" name="password"></div>
-                                </div>
-                                <br>
-                                <input type="submit" value="Login">
-                            </div>
-                        </div>
 
+        <form method="POST" actions="">
+            {% csrf_token %}
+            
+            <div class="logon_container">
+                <div class="input_box"><input type="text" name="username" placeholder="Username"></div>
+                <br>
+                <div class="input_box"><input type="password" name="password" placeholder="Password"></div>
+                <br>
+                <input type="submit" value="Login">
+            </div>
 
+            {{form.errors}}
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+        </form>
 
-                        {{form.errors}}
-                        {% for message in messages %}
-                        <p>{{message}}</p>
-                        {% endfor %}
-                        
-                    </form>
-             
-        </div>
     </body>
 </html>
