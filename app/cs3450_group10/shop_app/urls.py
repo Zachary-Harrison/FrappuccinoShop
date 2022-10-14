@@ -19,6 +19,9 @@ urlpatterns = [
     path('stock_manager', views.stock_manager, name="stock_manager"),
     path('pay_page_manager', views.pay_page_manager, name="pay_page_manager"),
 
-    path('logout', views.logoutUser, name='logout'),
+    path('logout_user', views.logout_user, name='logout_user'),
     path('register', views.registerPage, name="register"),
+
+    path('update_balance', views.update_balance, name="update_balance"),
+
 ]

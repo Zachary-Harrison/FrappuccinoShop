@@ -64,6 +64,58 @@ body {
     text-align: right;
 }
 
+.info_container {
+    display: inline-block;
+    margin: auto;
+    position: relative;
+    top: 10px;
+    left: 15%;
+    height: 50%;
+    width: 70%;
+    background-color: rgba(155, 155, 155, 50);
+}
+
+.info_container p {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.account_container {
+    display: inline-block;
+    margin: auto;
+    position: relative;
+    top: 20px;
+    left: 15%;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    width: 70%;
+    background-color: rgba(155, 155, 155, 50);
+}
+
+.account_container a {
+    background-color: #333;
+    display: block;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-decoration: none;
+}
+
+
+.balance_change {
+    border: 2px solid #a9a9a9;
+    position: relative;
+    top: 10px;
+    left: 33.34%;
+    width: 33.34%;
+}
+
+.account_container a:hover {
+    background-color: slateblue;
+}
+
 h1 {
     font-size: 40pt;
     padding: 0;
@@ -73,7 +125,6 @@ h1 {
 
 h3 {
     font-size: 18pt;
-    padding-top: 50px;
     padding-bottom: 10px;
     margin: 0;
     text-align: center;
@@ -86,32 +137,65 @@ h4 {
     text-align: center;
 }
 
-.label {
-    display: inline;
-    padding-right: 50px;
-}
-
-.input_box {
-    display: inline;
-    padding-right: 37%;
-}
 
 input {
+    position: relative;
+    left: 33.34%;
+    width: 33.34%; 
     border: 2px solid #a9a9a9;
 }
 
 input[type=submit] {
-    width: 10%;
-    font-size: 14pt;
-    margin: 15px;
-    margin-right: 45%;
+    background-color: #333;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 input[type=submit]:hover {
     background-color: slateblue;
 }
 
-.form_row {
-    padding-top: 5px;
-    padding-bottom: 5px;
+.logon_container {
+    position: relative;
+    width: 70%;
+    height: auto;
+    top: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    left: 15%;
+    background-color: rgba(155, 155, 155, 50);
+}
+
+.menu_container {
+    position: relative;
+    width: 70%;
+    height: auto;
+    top: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    left: 15%;
+    background-color: rgba(155, 155, 155, 50);
+}
+
+.drink_container {
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    width: 30%;
+    height: 400px;
+    top: 10px;
+    margin: 15px;
+    background-color: #333;
+    color: white;
+}
+
+.display_image {
+    position: relative;
+    width: 80%;
+    height: 80%;
+}
+
+.drink_title {
+    position: relative;
 }

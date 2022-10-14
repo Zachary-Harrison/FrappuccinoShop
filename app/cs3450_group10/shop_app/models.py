@@ -65,9 +65,7 @@ class Drink(models.Model):
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=14, decimal_places=2)
     ingredients = models.ManyToManyField(Ingredient)
-    # Django has a built in ImageField, but an alternate solution would be to store the image's file location in a CharField.
-    # ImageField requires "Pillow" module to be installed. Run python -m pip install Pillow"
-    image = models.ImageField()
+    image = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name

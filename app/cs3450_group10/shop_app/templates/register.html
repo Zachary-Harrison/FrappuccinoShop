@@ -20,33 +20,20 @@
         </div>
         <h1>Dan's Frappuccino Paradise</h1>
         <h4>Register a New Account</h4>
-        <div class="right_container">
-            <div>
-                <h3>Register</h3>
 
-                <form method="POST" actions="" class="input">
-                    {% csrf_token %}
-                    <div class="form_row">
-                        <div class="label">{{form.username.label}}</div>
-                        <div class="input_box">{{form.username}}</div>
-                    </div>
-                    <br>
-                    <div class="form_row">
-                        <div class="label">{{form.password1.label}}</div>
-                        <div class="input_box">{{form.password1}}</div>
-                    </div>
-                    <br>
-                    <div class="form_row">
-                        <div class="label">{{form.password2.label}}</div>
-                        <div class="input_box">{{form.password2}}</div>
-                    </div>
-                    <br>
-                    <br>
-                    {{form.errors}}
-                    <input type="submit" name="Create User">
-                </form>
-                
-            </div>  
+        <div class="logon_container">
+            <form method="POST" actions="" class="input">
+                {% csrf_token %}
+                <div class="input_box"><input type="text" placeholder="Username" name="username"></div>
+                <br>
+                <div class="input_box"><input type="password" placeholder="Password" name="password1"></div>
+                <br>
+                <div class="input_box"><input type="password"  placeholder="Confirm Password" name="password2"></div>
+                <br>
+                {{form.errors}}
+                <input type="submit" name="Create User">
+            </form>
         </div>
+
     </body>
 </html>

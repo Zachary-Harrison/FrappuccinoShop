@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from shop_app.models import Account
+from shop_app.models import Account, Drink
 from django.contrib.auth.models import User
 
 from .forms import CreateUserForm
@@ -41,10 +41,30 @@ def home_manager(request):
             current_account = account
     return render(request, 'home_manager.html', {'account': current_account})
 
+def update_balance(request):
+    accounts = Account.objects.all()
+    current_account = None
+    for account in accounts:
+        if account.user == request.user:
+            current_account = account
+            current_account.balance += 100
+            current_account.save()  
+    return redirect('account_customer')
 
 def account_customer(request):
-    template = loader.get_template('account_customer.html')
-    return HttpResponse(template.render())
+    accounts = Account.objects.all()
+    current_account = None
+    for account in accounts:
+        if account.user == request.user:
+            current_account = account
+        
+    if request.method == "POST":
+        username = request.POST.get('username')
+        request.user.username = username
+        request.user.save()
+        current_account.user = request.user
+        current_account.save()
+    return render(request, 'account_customer.html', {'account': current_account})
 
 def account_employee(request):
     template = loader.get_template('account_employee.html')
@@ -55,8 +75,8 @@ def account_manager(request):
     return HttpResponse(template.render())
 
 def menu_customer(request):
-    template = loader.get_template('menu_customer.html')
-    return HttpResponse(template.render())
+    drinks = Drink.objects.all()
+    return render(request, 'menu_customer.html', {'drinks': drinks})
 
 def menu_employee(request):
     template = loader.get_template('menu_employee.html')
@@ -99,11 +119,11 @@ def logon_page(request):
                 if temp.user == user:        
                     account = temp
             if account.user_type == 'Manager':
-                return redirect('home_manager')
+                return redirect('menu_manager')
             elif account.user_type == 'Employee':
-                return redirect('home_employee')
+                return redirect('menu_employee')
             else:
-                return redirect('home_customer')
+                return redirect('menu_customer')
 
         else:
             messages.info(request, 'Login Credentials are Incorrect')
@@ -111,9 +131,9 @@ def logon_page(request):
     context = {}
     return render(request, 'logon_page.html', context)
 
-def logoutUser(request):
+def logout_user(request):
     logout(request)
-    return redirect('logon_page')
+    return redirect('home_general')
 
 def registerPage(request):
     form = CreateUserForm()
