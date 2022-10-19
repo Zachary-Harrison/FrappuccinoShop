@@ -62,116 +62,124 @@ Each individual task within a story is assigned a number, which is the agreed up
 
 Documentation
 
-Upon completion, this document should be filled out, including a screenshot of the Github Project Board and the Burndown chart. Additionally, Writeups for each standup meeting should be completed.
+    - Upon completion, this document should be filled out, including a screenshot of the Github Project Board and the Burndown chart. Additionally, Writeups for each standup meeting should be completed.
 
-Tasks
+    - Tasks
 
-`		`Initial sprint planning information
+        -Initial sprint planning information
 
-`			`0.25
+            -0.25
 
-`		`Story filling sprint plan
+        -Story filling sprint plan
 
-`			`1.0
+            -1.0
 
-`		`Burndown chart
+        -Burndown chart
 
-`			`1.0
+            -1.0
 
-`		`Github Project backlog
+        -Github Project backlog
 
-`			`0.75
+            -0.75
 
-`		`Standup meeting Writeups
+        -Standup meeting Writeups
 
-`			`1.0
+            -1.0
 
-`	`4.0 Story Points total
+    -4.0 Story Points total
 
 
 Ingredients/Stock page
 
-Upon completion, the page where a manager can view the list of ingredients and their amount in stock should be functioning. Each ingredient should be listed, alongside their current stock, and a text field where a manager can enter a number for each ingredient. Upon pressing a button, the stock of each ingredient is increased by the amount entered into the text field. The total price to update the stock should also be deducted from the manager’s account.
+    -Upon completion, the page where a manager can view the list of ingredients and their amount in stock should be functioning. Each ingredient should be listed, alongside their current stock, and a text field where a manager can enter a number for each ingredient. Upon pressing a button, the stock of each ingredient is increased by the amount entered into the text field. The total price to update the stock should also be deducted from the manager’s account.
 
-`	`Tasks
+    -Tasks
 
-`		`UI
+        -UI
 
-`			`0.75
+            -0.75
 
-`		`Load ingredients from database
+        -Load ingredients from database
 
-`			`0.25
+            -0.25
 
-`		`Update stock of ingredients
+        -Update stock of ingredients
 
-`			`0.75
-
+            -0.75
+    
+    1.75 Story Points total
 
 
 Individual Drink Order Page
 
-Upon completion, a page where a customer can view and order a specific drink should be completed. There should be a list of ingredients in the drink, where the customer can increase or decrease the amount of each ingredient in the drink. The customer can then click a button to submit the order, which adds the drink to the list of orders, deducts the drink’s price from the customer’s balance, and deducts the amount of ingredients used from said ingredient’s stock.
+    -Upon completion, a page where a customer can view and order a specific drink should be completed. There should be a list of ingredients in the drink, where the customer can increase or decrease the amount of each ingredient in the drink. The customer can then click a button to submit the order, which adds the drink to the list of orders, deducts the drink’s price from the customer’s balance, and deducts the amount of ingredients used from said ingredient’s stock.
 
-`	`Tasks
+    -Tasks
 
-`		`UI
+        -UI
 
-`			`0.75
+            -0.75
 
-`		`Load drink info/other ingredients
+        -Load drink info/other ingredients
 
-`			`0.5
+            -0.5
 
-`		`Customer submits order
+        -Customer submits order
 
-`			`1.5
+            -1.5
 
+    -2.75 Story Points total
 
 
 
 
 Orders List Page
 
-Upon completion, this page should allow an employee to view all currently available orders, each having a button that can fulfill said order. When an employee fulfills an order, the order should be removed from the database.
+    -Upon completion, this page should allow an employee to view all currently available orders, each having a button that can fulfill said order. When an employee fulfills an order, the order should be removed from the database.
 
-`	`Tasks
+    -Tasks
 
-`		`UI
+        -UI
 
-`			`0.75
+            -0.75
 
-`		`Load orders from database
+        -Load orders from database
 
-`			`0.5
+            -0.5
 
-`		`Employee fulfills order
+        -Employee fulfills order
 
-`			`0.5
+            -0.5
+
+    -1.75 Story Points total
 
 Merge Pages
+    
+    -Upon completion, all pages that are currently distinct for each user type (manager, employee, customer) should be condensed into one page of each type for each user. If a page is exclusively for a specific user type, that page should only be accessible by said user type. Any features within a universal page that are only available to a specific user type should also only be available to said user type.
 
-`	`Tasks
+    -Tasks
 
-`		`UI
+        -UI
 
 
 Manager Privileges
 
-Upon completion, actions that can be taken by a manager should be implemented, and should only be available on a manager’s account page. These methods include hiring/firing an employee, which promotes them from a customer, or demotes them to a customer respectively. Another method is paying all employees, which resets all employees hours worked to 0, and adds the proper amount to their balance (including extra pay for over time). This money should be deducted from the manager’s balance.
+    -Upon completion, actions that can be taken by a manager should be implemented, and should only be available on a manager’s account page. These methods include hiring/firing an employee, which promotes them from a customer, or demotes them to a customer respectively. Another method is paying all employees, which resets all employees hours worked to 0, and adds the proper amount to their balance (including extra pay for over time). This money should be deducted from the manager’s balance.
 
-`	`Tasks
+    -Tasks
 
-`		`UI
+        -UI
 
-`			`0.5
+            -0.5
 
-`		`Hire / Fire Employee methods
+        -Hire / Fire Employee methods
 
-`			`0.75
+            -0.75
 
-`		`Pay Employees method
+        -Pay Employees method
 
-`			`0.75
+            -0.75
+    
+    -2.0 Story Points total
 
 ![](Aspose.Words.c314199e-eba1-4665-87a3-ad296e86fb63.001.png)

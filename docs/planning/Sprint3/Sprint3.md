@@ -62,23 +62,23 @@ Each individual task within a story is assigned a number, which is the agreed up
 
 User creation page
 
-Upon completion, this page should allow a user to create an account by inputting a username and password each into a text field. Then the user should be created and stored in the database, with the password being encrypted by Django, and the encrypted password is associated with the user in the database, so that their true password is not stored anywhere.
+    -Upon completion, this page should allow a user to create an account by inputting a username and password each into a text field. Then the user should be created and stored in the database, with the password being encrypted by Django, and the encrypted password is associated with the user in the database, so that their true password is not stored anywhere.
 
-`	`Tasks
+    -Tasks
 
-`		`UI
+        -UI
 
-`			`0.5
+            -0.5
 
-`		`Encryption
+        -Encryption
 
-`			`0.25
+            -0.25
 
-`		`Store in Database
+        -Store in Database
 
-`			`0.5
+            -0.5
 
-`	`1.25 Story Points total
+    -1.25 Story Points total
 
 
 
@@ -88,23 +88,23 @@ Upon completion, this page should allow a user to create an account by inputting
 
 Log in Page
 
-Upon completion, this page should display text fields that allow a user to input their username and password to log into the website. The username should be located in the database to determine that a user with the given username does exist, and their password should be passed through the Django encryption and verified that the encryptions match. If either the username does not exist, or the password does not match, an appropriate error message should be displayed. If the user info is correct, then the user should be logged into the website, and be redirected to a page indicating that they have been successfully logged in.	
+    -Upon completion, this page should display text fields that allow a user to input their username and password to log into the website. The username should be located in the database to determine that a user with the given username does exist, and their password should be passed through the Django encryption and verified that the encryptions match. If either the username does not exist, or the password does not match, an appropriate error message should be displayed. If the user info is correct, then the user should be logged into the website, and be redirected to a page indicating that they have been successfully logged in.	
 
-`	`Tasks
+    -Tasks
 
-`		`UI
+        -UI
 
-`			`0.5
+            -0.5
 
-`		`Access User Info
+        -Access User Info
 
-`			`1.5
+            -1.5
 
-`		`Navigation after login
+        -Navigation after login
 
-`			`0.5
+            -0.5
 
-`	`2.5 Story Points total
+    -2.5 Story Points total
 
 
 
@@ -122,91 +122,91 @@ Upon completion, this page should display text fields that allow a user to input
 
 Populate and modify database
 
-Upon completion, the Django database should be populated with at least 12 ingredients, and all the information that is associated with an ingredient. Additionally, the database should include at least 6 drinks, and all the information that is associated with a drink. The database should also be modified to combine the Customer, Employee, and Manager models into a single model in the database, and the Customer, Employee, and Manager models can exist as sub-models of the singular “User” model, taking advantage of polymorphism.
+    -Upon completion, the Django database should be populated with at least 12 ingredients, and all the information that is associated with an ingredient. Additionally, the database should include at least 6 drinks, and all the information that is associated with a drink. The database should also be modified to combine the Customer, Employee, and Manager models into a single model in the database, and the Customer, Employee, and Manager models can exist as sub-models of the singular “User” model, taking advantage of polymorphism.
 
-`	`Tasks
+    -Tasks
 
-Ingredients
+        -Ingredients
 
-`			`1.0
+            -1.0
 
-`		`Drinks
+        -Drinks
 
-`			`1.5
+            -1.5
 
-`		`Condense to one User Model
+        -Condense to one User Model
 
-`			`1.0
+            -1.0
 
-`		`Create Orders Model
+        -Create Orders Model
 
-`			`0.5
+            -0.5
 
-`	`4.0 Story Points total
+    -4.0 Story Points total
 
 Drink Menu page
 
-`	`Upon completion, this page should display each drink in the menu in a visually pleasing way.
+    -Upon completion, this page should display each drink in the menu in a visually pleasing way.
 
-`	`Tasks
+    -Tasks
 
-`		`UI
+        -UI
 
-`			`1.0
+            -1.0
 
-`		`Load drinks from database
+        -Load drinks from database
 
-`			`0.5
+            -0.5
 
-`	`1.5 Story Points total
+    -1.5 Story Points total
 
 
 
 
 Customer account page (change username, update balance)
 
-Upon completion, this page should display a user’s information to them. This information should include their username, and their monetary balance. Each of these is associated with a button, to allow a user to change their username, and to allow the user to input an amount to increase their balance by.
+    -Upon completion, this page should display a user’s information to them. This information should include their username, and their monetary balance. Each of these is associated with a button, to allow a user to change their username, and to allow the user to input an amount to increase their balance by.
 
-`	`Tasks
+    -Tasks
 
-UI
+        -UI
 
-`			`0.25
+            -0.25
 
-`		`Functionality of database updates (username, balance)
+        -Functionality of database updates (username, balance)
 
-`			`0.75
+            -0.75
 
-`	`1.0 Story Points total
+    -1.0 Story Points total
 
 
 Documentation
 
-Upon completion, this document should be filled out, including a screenshot of the Github Project Board and the Burndown chart. Additionally, Writeups for each standup meeting should be completed.
+    -Upon completion, this document should be filled out, including a screenshot of the Github Project Board and the Burndown chart. Additionally, Writeups for each standup meeting should be completed.
 
-Tasks
+    -Tasks
 
-`		`Initial sprint planning information
+        -Initial sprint planning information
 
-`			`0.25
+            -0.25
 
-`		`Story filling sprint plan
+        -Story filling sprint plan
 
-`			`1.0
+            -1.0
 
-`		`Burndown chart
+        -Burndown chart
 
-`			`1.0
+            -1.0
 
-`		`Github Project backlog
+        -Github Project backlog
 
-`			`0.75
+            -0.75
 
-`		`Standup meeting Writeups
+        -Standup meeting Writeups
 
-`			`1.0
+            -1.0
 
-`	`4.0 Story Points total
+    -4.0 Story Points total
 
 ![](Aspose.Words.df2394de-bed5-4d04-ab55-b31b3f6a0206.001.png)
 
