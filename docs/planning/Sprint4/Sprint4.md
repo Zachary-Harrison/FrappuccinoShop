@@ -183,3 +183,4 @@ Manager Privileges
     -2.0 Story Points total
 
 ![](Aspose.Words.c314199e-eba1-4665-87a3-ad296e86fb63.001.png)
+![](Milestone3Sprint2_10-18-22.jpg)
