@@ -64,6 +64,10 @@ body {
     background-color: #111;
 }
 
+.button_list li button:hover {
+    background-color: #111;
+}
+
 .center_container {
     text-align: center;
 }
@@ -190,6 +194,8 @@ input[type=submit]:hover {
     background-color: rgba(155, 155, 155, 50);
 }
 
+
+
 .drink_container {
     text-align: center;
     display: inline-block;
@@ -210,4 +216,27 @@ input[type=submit]:hover {
 
 .drink_title {
     position: relative;
+}
+
+.inventory_container {
+    text-align: center;
+    position: relative;
+    width: 70%;
+    height: auto;
+    top: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    left: 15%;
+    background-color: rgba(155, 155, 155, 50);
+}
+
+.inventory_container ul {
+    list-style-type: none;
+}
+
+.inventory_container input[type=number] {
+    width: 50px;
+    position: unset;
+    left: 0;
+    border: 2px solid #a9a9a9;
 }
