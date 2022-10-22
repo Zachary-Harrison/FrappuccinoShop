@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="../static/style.css?{% now 'U' %}" type = "text/css"/>
+        <title>Dan's Frap. Paradise</title>
+    </head>
+
+    <body>
+        <div class="navigation_top">
+            <ul>
+				<li><a href="{% url 'logout_user' %}">Log Off</a></li>
+				<li><button onclick="aboutNav()" id="about_button" class="navigation_button">About</button></li>
+                <li><button onclick="settingsNav()" id="settings_button" class="navigation_button">Settings</button></li>
+                <li><button onclick="menuNav()" id="menu_button" class="navigation_button" style="background-color: slateblue; border-color: slateblue;">Menu</button></li>
+                {% if account.user_type == "Manager" or account.user_type == "Employee" %}
+                <li><button onclick="cashierNav()" id="cashier_button" class="navigation_button">Cash Register</button></li>
+                {% endif %}
+                {% if account.user_type == "Manager" %}
+                <li><button onclick="payNav()" id="pay_nav_button" class="navigation_button">Timecards</button></li>
+                <li><button onclick="stockNav()" id="stock_button" class="navigation_button">Inventory</button></li>
+                {% endif %}
+			</ul>
+        </div>
+        <div id="home_div" style="display: none">
+            <h4>Welcome To</h4>
+            <h1>Dan's Frappuccino Paradise</h1>
+            <h4>Hello {{ account.user.username }}</h4>
+            <div class="info_container">
+                <h4> About Us </h4>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Reprehenderit est dolore ex nihil, alias ipsum corporis 
+                    autem in fuga sequi quod, voluptas dignissimos tenetur 
+                    harum quisquam officia? Dolores tempore neque sequi 
+                    aliquid placeat ducimus mollitia atque consectetur ratione, 
+                    temporibus necessitatibus obcaecati non quia exercitationem? 
+                    Ratione accusamus rerum vitae necessitatibus libero quisquam 
+                    optio nulla, quidem error eum corporis. Quisquam tempora reprehenderit 
+                    qui quia fugit aut totam necessitatibus animi, tempore ad, optio sed, 
+                    earum ipsa enim vitae assumenda mollitia possimus? Explicabo magnam quia maxime, 
+                    molestiae voluptate ipsam ipsa ut reiciendis nemo, architecto impedit reprehenderit 
+                    eveniet vero doloribus quaerat laboriosam, quod cum placeat eaque odio? Fuga ipsa 
+                    doloribus reprehenderit quae culpa nisi quibusdam omnis, voluptatibus aperiam corrupti 
+                    ullam vel saepe repellendus, eligendi perspiciatis placeat quas veritatis tempora nulla? 
+                    Repellendus dolore dicta, mollitia maiores, vitae dignissimos ullam qui assumenda vero0 
+                    reiciendis facilis quaerat impedit, rerum accusamus? Suscipit omnis, eos nemo 
+                    doloribus saepe obcaecati neque.</p>
+            </div> 
+        </div>
+
+        <div id="account_div" style="display: none">
+            <h1>Dan's Frappuccino Paradise</h1>
+            <h4>Account Settings</h4>
+            
+            <div class="account_container">
+                <h4>Username: {{ account }}</h4> 
+                <h4>Current Balance: {{ account.balance }}</h4>
+                <form method="POST" actions="">
+                    {% csrf_token %}
+                    <br>
+                    <div class="input_box"><input type="text" name="username" placeholder="New Username"></div>
+                    <br>
+                    <input type="submit" value="Update Username">
+                </form>
+                <a href="{% url 'update_balance' %}" class="balance_change">Increase Money by 100$</a>
+            </div>
+        </div>
+
+        <div id="menu_div" style.display="block">
+            <h1>Dan's Frappuccino Paradise</h1>
+            <h4>Menu</h4>
+            <div class="menu_container">
+                {% for drink in drinks %}
+                <div class="drink_container">
+                    {{ drink }}
+                    <br><br>
+                    <img class="display_image" src="{{ drink.image }}">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if account.user_type == "Manager" or account.user_type == "Employee" %}
+        <div id="cashier_div" style="display: none">
+            <h1>Dan's Frappuccino Paradise</h1>
+            <h4>Cashier</h4>
+        </div>
+        {% endif %}
+
+        {% if account.user_type == "Manager" %}
+        <div id="pay_div" style="display: none">
+            <h1>Dan's Frappuccino Paradise</h1>
+            <h4>Pay Page</h4>
+        </div>
+        {% endif %}
+
+        {% if account.user_type == "Manager" %}
+        <div id="stock_div" style="display: none">
+            <h1>Dan's Frappuccino Paradise</h1>
+            <h4>Inventory</h4>
+        </div>
+        {% endif %}
+
+        <script src="../static/script.js"></script>
+
+    </body>
+</html>
