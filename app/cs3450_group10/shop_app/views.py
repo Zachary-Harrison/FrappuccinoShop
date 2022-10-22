@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from shop_app.models import Account, Drink
+from shop_app.models import Account, Drink, Ingredient
 from django.contrib.auth.models import User
 
 from .forms import CreateUserForm
@@ -32,6 +32,7 @@ def home(request):
         if account.user == request.user:
             current_account = account
     drinks = Drink.objects.all()
+    ingredients = Ingredient.objects.all()
 
     if request.method == "POST":
         username = request.POST.get('username')
@@ -40,7 +41,7 @@ def home(request):
         current_account.user = request.user
         current_account.save()
 
-    return render(request, 'home.html', {'account': current_account, 'drinks': drinks})
+    return render(request, 'home.html', {'account': current_account, 'drinks': drinks, 'ingredients': ingredients})
 
 
 def logon_page(request):

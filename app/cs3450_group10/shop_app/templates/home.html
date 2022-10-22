@@ -63,6 +63,9 @@
                     <input type="submit" value="Update Username">
                 </form>
                 <a href="{% url 'update_balance' %}" class="balance_change">Increase Money by 100$</a>
+                {% if account.user_type == "Employee" %}
+                <a href="" class="balance_change">Increase Hours Worked by 4 hours</a>
+                {% endif %}
             </div>
         </div>
 
@@ -71,7 +74,7 @@
             <h4>Menu</h4>
             <div class="menu_container">
                 {% for drink in drinks %}
-                <div class="drink_container">
+                <div class="drink_container" id="{{ drink }}">
                     {{ drink }}
                     <br><br>
                     <img class="display_image" src="{{ drink.image }}">
@@ -90,7 +93,8 @@
         {% if account.user_type == "Manager" %}
         <div id="pay_div" style="display: none">
             <h1>Dan's Frappuccino Paradise</h1>
-            <h4>Pay Page</h4>
+            <h4>Pay Page</h4>   
+            <button id="pay_employees_button">Pay All Employees</button>
         </div>
         {% endif %}
 
@@ -98,6 +102,14 @@
         <div id="stock_div" style="display: none">
             <h1>Dan's Frappuccino Paradise</h1>
             <h4>Inventory</h4>
+            <div class="inventory_container">
+                <ul>
+                {% for ingredient in ingredients %}
+                    <li>{{ ingredient }} | {{ ingredient.stock }} <input type="number" id="{{ingredient}}"></li>
+                {% endfor %}
+                </ul>
+                <button>Purchase Stock</button>
+            </div>
         </div>
         {% endif %}
 
