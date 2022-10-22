@@ -15,32 +15,6 @@ def home_general(request):
     template = loader.get_template('home_general.html')
     return HttpResponse(template.render())
 
-
-def home_customer(request):
-    accounts = Account.objects.all()
-    current_account = None
-    for account in accounts:
-        if account.user == request.user:
-            current_account = account
-    return render(request, 'home_customer.html', {'account': current_account})
-
-
-def home_employee(request):
-    accounts = Account.objects.all()
-    current_account = None
-    for account in accounts:
-        if account.user == request.user:
-            current_account = account
-    return render(request, 'home_employee.html', {'account': current_account})
-    
-def home_manager(request):
-    accounts = Account.objects.all()
-    current_account = None
-    for account in accounts:
-        if account.user == request.user:
-            current_account = account
-    return render(request, 'home_manager.html', {'account': current_account})
-
 def update_balance(request):
     accounts = Account.objects.all()
     current_account = None
@@ -49,58 +23,24 @@ def update_balance(request):
             current_account = account
             current_account.balance += 100
             current_account.save()  
-    return redirect('account_customer')
+    return redirect('home')
 
-def account_customer(request):
+def home(request):
     accounts = Account.objects.all()
     current_account = None
     for account in accounts:
         if account.user == request.user:
             current_account = account
-        
+    drinks = Drink.objects.all()
+
     if request.method == "POST":
         username = request.POST.get('username')
         request.user.username = username
         request.user.save()
         current_account.user = request.user
         current_account.save()
-    return render(request, 'account_customer.html', {'account': current_account})
 
-def account_employee(request):
-    template = loader.get_template('account_employee.html')
-    return HttpResponse(template.render())
-
-def account_manager(request):
-    template = loader.get_template('account_manager.html')
-    return HttpResponse(template.render())
-
-def menu_customer(request):
-    drinks = Drink.objects.all()
-    return render(request, 'menu_customer.html', {'drinks': drinks})
-
-def menu_employee(request):
-    template = loader.get_template('menu_employee.html')
-    return HttpResponse(template.render())
-
-def menu_manager(request):
-    template = loader.get_template('menu_manager.html')
-    return HttpResponse(template.render())
-
-def cashier_employee(request):
-    template = loader.get_template('cashier_employee.html')
-    return HttpResponse(template.render())
-
-def cashier_manager(request):
-    template = loader.get_template('cashier_manager.html')
-    return HttpResponse(template.render())
-
-def stock_manager(request):
-    template = loader.get_template('stock_manager.html')
-    return HttpResponse(template.render())
-
-def pay_page_manager(request):
-    template = loader.get_template('pay_page_manager.html')
-    return HttpResponse(template.render())
+    return render(request, 'home.html', {'account': current_account, 'drinks': drinks})
 
 
 def logon_page(request):
@@ -119,11 +59,11 @@ def logon_page(request):
                 if temp.user == user:        
                     account = temp
             if account.user_type == 'Manager':
-                return redirect('menu_manager')
+                return redirect('home')
             elif account.user_type == 'Employee':
-                return redirect('menu_employee')
+                return redirect('home')
             else:
-                return redirect('menu_customer')
+                return redirect('home')
 
         else:
             messages.info(request, 'Login Credentials are Incorrect')

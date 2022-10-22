@@ -16,6 +16,17 @@ body {
 
 .navigation_top li a {
     display: block;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navigation_top li button {
+    display: block;
+    border: solid #333;
+    background-color: #333;
     color: white;
     text-align: center;
     padding: 14px 16px;
@@ -26,9 +37,10 @@ body {
     background-color: #111;
 }
 
-.active {
-    background-color: slateblue;
+.navigation_top li button:hover {
+    background-color: #111;
 }
+
 
 .button_list ul {
     list-style-type: none;
