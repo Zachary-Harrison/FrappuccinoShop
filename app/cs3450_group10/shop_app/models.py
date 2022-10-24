@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.postgres.fields import ArrayField
 
 
 # Password encryption is handled when a Customer/Employee/Manager instance is created Passwords stored in the models
@@ -60,6 +59,24 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.name
 
+    # amount should be an integer, user is an instance of our Account model
+    def addStock(self, amount, user):
+        if user.user_type != User.Type.MANAGER:
+            """0 indicates the user attempting to add to the ingredient is not a manager, the request should not be
+            completed, and a warning should be issued """
+            return 0
+        if not amount.isnumeric():
+            # 1 indicates the amount to increase stock by is not a number
+            return 1
+        totalCost = self.price * amount
+        if totalCost > user.balance:
+            # 2 indicates the manager does not have enough money in their account to make the purchase
+            return 2
+        self.stock += amount
+        self.save()
+        user.balance -= totalCost
+        user.save()
+
 
 class Drink(models.Model):
     name = models.CharField(max_length=100)
@@ -76,9 +93,18 @@ class Order(models.Model):
 
     def priceOf(self):
         totalPrice = 0
-        for drink in drinks:
+        for drink in self.drinks:
             totalPrice += drink.price
         return totalPrice
+
+    def fulfill(self, user):
+        if user.user_type == User.Type.CUSTOMER:
+            # 0 indicates the user attempting to fulfill the order is a customer, and should not be allowed to do so
+            return 0
+        self.delete()
+        # 1 indicates the order has been fulfilled successfully
+        return 1
+
 
 
 class Store(models.Model):
