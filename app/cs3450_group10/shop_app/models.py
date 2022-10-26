@@ -15,6 +15,7 @@ class Account(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     balance = models.DecimalField(max_digits=14, decimal_places=2)
+    hours = models.IntegerField(default=0)
     user_type = models.CharField(
         max_length=8,
         choices=Type.choices,
@@ -40,15 +41,67 @@ class Account(models.Model):
             raise RuntimeError
         return
 
-    def addHours(self, hours):
+    def addHours(self, hours, employee):
+        if employee.user_type != Account.Type.EMPLOYEE:
+            # 0 indicates that a non-employee tried to add hours, only employees can add hours worked
+            return 0
         self.hours += hours
+        # 1 indicates that the employee successfully added their hours
+        return 1
 
-    def fireEmployee(self, employee):
-        # managers simply demote employees to customers, not remove them from the database
-        if employee.user_type == User.Type.EMPLOYEE:
-            employee.user_type = User.Type.CUSTOMER
-        else:
-            return
+    def hireEmployee(self, manager, hireName):
+        if manager.user_type != Account.Type.MANAGER:
+            # 0 indicates that a non manager is attempting to hire, which should not be allowed
+            return 0
+        accountsList = Account.objects.all()
+        for account in accountsList:
+            if account.user.username == hireName:
+                if account.user_type != Account.Type.CUSTOMER:
+                    # 1 indicates the user exists, but they are not a customer, only customers can be hired
+                    return 1
+                account.user_type = Account.Type.EMPLOYEE
+                # 2 indicates the user exists and they have been successfully hired as an employee
+                return 2
+        # 3 indicates that no such user exists with the name provided
+        return 3
+
+    def fireEmployee(self, manager, fireName):
+        if manager.user_type != Account.Type.MANAGER:
+            # 0 indicates that a non manager is attempting to fire, which should not be allowed
+            return 0
+        accountsList = Account.objects.all()
+        for account in accountsList:
+            if account.user.username == fireName:
+                if account.user_type != Account.Type.EMPLOYEE:
+                    # 1 indicates the user exists, but they are not a employee, only employees can be fired
+                    return 1
+                account.user_type = Account.Type.CUSTOMER
+                # 2 indicates the user exists and they have been successfully fired, demoted to customer status
+                return 2
+        # 3 indicates that no such user exists with the name provided
+        return 3
+
+    def payEmployees(self, manager):
+        # Employees will be paid $20/hr
+        wage = 20
+        if manager.user_type != Account.Type.MANAGER:
+            # 0 indicates that a non manager is attempting to hire, which should not be allowed
+            return 0
+        accountsList = Account.objects.all()
+        for account in accountsList:
+            if account.user_type == Account.Type.EMPLOYEE:
+                paycheck = wage * account.hours
+                if account.hours > 40:
+                    paycheck += wage * (account.hours - 40) / 2
+                if manager.balance < paycheck:
+                    # 1 indicates not all employees were successfully paid because the manager did not have enough
+                    # money to pay all, some employees may have been paid, but not all
+                    return 1
+                account.hours = 0
+                account.balance += paycheck
+                manager.balance -= paycheck
+        # 2 indicates that all employees were successfully paid
+        return 2
 
     def changeInventory(self, store, drink):
         store.changeInventory(drink.ingredients)
