@@ -41,16 +41,16 @@ class Account(models.Model):
             raise RuntimeError
         return
 
-    def addHours(self, hours, employee):
-        if employee.user_type != Account.Type.EMPLOYEE:
+    def addHours(self, hours):
+        if self.user_type != Account.Type.EMPLOYEE:
             # 0 indicates that a non-employee tried to add hours, only employees can add hours worked
             return 0
         self.hours += hours
         # 1 indicates that the employee successfully added their hours
         return 1
 
-    def hireEmployee(self, manager, hireName):
-        if manager.user_type != Account.Type.MANAGER:
+    def hireEmployee(self, hireName):
+        if self.user_type != Account.Type.MANAGER:
             # 0 indicates that a non manager is attempting to hire, which should not be allowed
             return 0
         accountsList = Account.objects.all()
@@ -65,8 +65,8 @@ class Account(models.Model):
         # 3 indicates that no such user exists with the name provided
         return 3
 
-    def fireEmployee(self, manager, fireName):
-        if manager.user_type != Account.Type.MANAGER:
+    def fireEmployee(self, fireName):
+        if self.user_type != Account.Type.MANAGER:
             # 0 indicates that a non manager is attempting to fire, which should not be allowed
             return 0
         accountsList = Account.objects.all()
@@ -81,10 +81,10 @@ class Account(models.Model):
         # 3 indicates that no such user exists with the name provided
         return 3
 
-    def payEmployees(self, manager):
+    def payEmployees(self):
         # Employees will be paid $20/hr
         wage = 20
-        if manager.user_type != Account.Type.MANAGER:
+        if self.user_type != Account.Type.MANAGER:
             # 0 indicates that a non manager is attempting to hire, which should not be allowed
             return 0
         accountsList = Account.objects.all()
@@ -93,13 +93,13 @@ class Account(models.Model):
                 paycheck = wage * account.hours
                 if account.hours > 40:
                     paycheck += wage * (account.hours - 40) / 2
-                if manager.balance < paycheck:
+                if self.balance < paycheck:
                     # 1 indicates not all employees were successfully paid because the manager did not have enough
                     # money to pay all, some employees may have been paid, but not all
                     return 1
                 account.hours = 0
                 account.balance += paycheck
-                manager.balance -= paycheck
+                self.balance -= paycheck
         # 2 indicates that all employees were successfully paid
         return 2
 
@@ -132,6 +132,9 @@ class Ingredient(models.Model):
         self.save()
         user.balance -= totalCost
         user.save()
+
+    def removeStock(self, amount):
+        self.stock -= amount
 
 
 class Drink(models.Model):
