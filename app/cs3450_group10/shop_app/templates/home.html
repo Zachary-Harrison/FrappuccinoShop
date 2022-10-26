@@ -60,11 +60,20 @@
                     <br>
                     <div class="input_box"><input type="text" name="username" placeholder="New Username"></div>
                     <br>
-                    <input type="submit" value="Update Username">
+                    <input type="submit" name="update_username" value="Update Username">
                 </form>
-                <a href="{% url 'update_balance' %}" class="balance_change">Increase Money by 100$</a>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="submit" name="increase_balance" value="Increase Balance By $100">
+                </form>
+                <br>
                 {% if account.user_type == "Employee" %}
                 <a href="" class="balance_change">Increase Hours Worked by 4 hours</a>
+                {% endif %}
+                {% if account.user_type == "Manager" %}
+                <div class="input_box"><input type="text" name="employee_name" placeholder="Employee Name"></div>
+                <a href="" class="balance_change">Hire Employee</a>
+                <a href="" class="balance_change">Fire Employee</a>
                 {% endif %}
             </div>
         </div>
@@ -114,6 +123,9 @@
         {% endif %}
 
         <script src="../static/script.js"></script>
+        {% if goto_page == 'account' %}
+            <script>settingsNav()</script>
+        {% endif %}
 
     </body>
 </html>

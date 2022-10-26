@@ -28,6 +28,7 @@ def update_balance(request):
 def home(request):
     accounts = Account.objects.all()
     current_account = None
+    goto_page = 'menu'
     for account in accounts:
         if account.user == request.user:
             current_account = account
@@ -35,13 +36,21 @@ def home(request):
     ingredients = Ingredient.objects.all()
 
     if request.method == "POST":
-        username = request.POST.get('username')
-        request.user.username = username
-        request.user.save()
-        current_account.user = request.user
-        current_account.save()
+        if request.POST.get("update_username"):
+            username = request.POST.get('username')
+            request.user.username = username
+            request.user.save()
+            current_account.user = request.user
+            current_account.save()
+            goto_page = 'account'
+        if request.POST.get("increase_balance"):
+            print("increasing balance")
+            current_account.balance += 100
+            current_account.save()
+            goto_page = 'account'
 
-    return render(request, 'home.html', {'account': current_account, 'drinks': drinks, 'ingredients': ingredients})
+
+    return render(request, 'home.html', {'account': current_account, 'drinks': drinks, 'ingredients': ingredients, 'goto_page': goto_page})
 
 
 def logon_page(request):

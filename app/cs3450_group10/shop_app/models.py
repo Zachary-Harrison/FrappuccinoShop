@@ -25,7 +25,10 @@ class Account(models.Model):
         return self.user.username
 
     def get_user_type(self):
-        return self.UserType(self.user_type)
+        return self.user_type
+
+    def increaseBalance(self):
+        self.balance += 100
 
     def makeDrinkFor(self, store, menu, drink, customer):
         # make sure drink exists
