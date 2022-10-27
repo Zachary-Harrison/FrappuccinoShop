@@ -26,10 +26,20 @@
                 {% csrf_token %}
                 <div class="input_box"><input type="text" placeholder="Username" name="username"></div>
                 <br>
+                
                 <div class="input_box"><input type="password" placeholder="Password" name="password1"></div>
                 <br>
                 <div class="input_box"><input type="password"  placeholder="Confirm Password" name="password2"></div>
                 <br>
+                <div class="register_requirements">
+                    <p>Password requirements are:
+                        <ul>
+                            <li>At least 8 characters</li>
+                            <li>At least 1 number</li>
+                            <li>At least 1 special character</li>
+                        </ul>
+                    </p>
+                    </div>
                 {{form.errors}}
                 <input type="submit" name="Create User">
             </form>

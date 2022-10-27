@@ -183,6 +183,17 @@ input[type=submit]:hover {
     background-color: rgba(155, 155, 155, 50);
 }
 
+.register_requirements {
+    position: relative;
+    left: 40%;
+    height: auto;
+    width: 200px;
+    top: 10px;
+    
+    
+    background-color: rgba(155, 155, 155, 50);
+}
+
 .menu_container {
     position: relative;
     width: 70%;
