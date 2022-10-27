@@ -103,6 +103,26 @@ class Account(models.Model):
         # 2 indicates that all employees were successfully paid
         return 2
 
+    # drink is an instance of the Drink model, ingredientCount is an array containing the number of each ingredient
+    # to include in the order, manager is the manager of the store and will obtain the money from the order
+    def orderDrink(self, drink, ingredientCount, manager):
+        ingredientList = Ingredient.objects.all()
+        for i in range(len(ingredientCount)):
+            if ingredientCount[i] > ingredientList[i].stock:
+                # 0 indicates that not enough ingredients are available in stock to submit the order
+                return 0
+        if self.balance < drink.price:
+            # 1 indicates that the user submitting the order does not have the necessary funds to purchase the drink
+            return 1
+        for i in range(len(ingredientCount)):
+            ingredientList[i].removeStock(ingredientCount[i])
+        self.balance -= drink.price
+        manager.balance += drink.price
+        order = Order(drink=drink, name=self.user.username)
+        order.save()
+        # 2 indicates the order was successfully submitted
+        return 2
+
     def changeInventory(self, store, drink):
         store.changeInventory(drink.ingredients)
 
@@ -148,13 +168,8 @@ class Drink(models.Model):
 
 
 class Order(models.Model):
-    drinks = models.QuerySet(model=Drink)
-
-    def priceOf(self):
-        totalPrice = 0
-        for drink in self.drinks:
-            totalPrice += drink.price
-        return totalPrice
+    drink = models.ForeignKey(Drink, on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=100, null=True)
 
     def fulfill(self, user):
         if user.user_type == User.Type.CUSTOMER:
