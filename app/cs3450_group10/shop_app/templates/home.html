@@ -87,10 +87,36 @@
                     {{ drink }}
                     <br><br>
                     <img class="display_image" src="{{ drink.image }}">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="submit" name="{{ drink }}" class="order_button" value="Order Now!">
+                    </form>
                 </div>
                 {% endfor %}
             </div>
         </div>
+
+        <div id="drink_div" style="display: none">
+            <h1>Dan's Frappuccino Paradise</h1>
+            <h4>Order</h4>
+            <h3>{{ current_drink }}</h3>
+            <br>
+            <img class="order_display_image" src="{{ current_drink.image }}">
+            <div style="background-color: rgba(155, 155, 155, 50); padding: 25px;">
+                <form method="POST">
+                    {% csrf_token %}
+                    <ul class="order_addons">
+                        {% for ingredient in ingredients %}
+                            <li> <input type="number" id="{{ingredient}}" value="0"> | {{ ingredient }}</li>
+                        {% endfor %}
+                        <input type="submit" name="order_submit" value="Submit Order">
+                    </ul>
+                </form>
+            </div>
+
+        </div>
+
+
 
         {% if account.user_type == "Manager" or account.user_type == "Employee" %}
         <div id="cashier_div" style="display: none">
@@ -111,20 +137,25 @@
         <div id="stock_div" style="display: none">
             <h1>Dan's Frappuccino Paradise</h1>
             <h4>Inventory</h4>
-            <div class="inventory_container">
-                <ul>
-                {% for ingredient in ingredients %}
-                    <li>{{ ingredient }} | {{ ingredient.stock }} <input type="number" id="{{ingredient}}"></li>
-                {% endfor %}
-                </ul>
-                <button>Purchase Stock</button>
-            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="inventory_container">
+                    <ul>
+                    {% for ingredient in ingredients %}
+                        <li><input type="number" id="{{ingredient}}" name="inventory_{{ingredient}}"> | {{ ingredient }} | {{ ingredient.stock }}</li>
+                    {% endfor %}
+                    </ul>
+                    <input type="submit" name="purchase_stock" value="Purchase Stock">
+                </div>
+            </form>
         </div>
         {% endif %}
 
         <script src="../static/script.js"></script>
         {% if goto_page == 'account' %}
             <script>settingsNav()</script>
+        {% elif goto_page == 'order_page' %}
+            <script>drinkPageNav()</script>
         {% endif %}
 
     </body>

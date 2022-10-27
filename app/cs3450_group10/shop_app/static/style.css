@@ -251,3 +251,27 @@ input[type=submit]:hover {
     left: 0;
     border: 2px solid #a9a9a9;
 }
+
+.order_addons {
+    list-style: none;
+    display: inline;
+    position: relative;
+    left: 25px;
+}
+
+.order_addons input[type=number] {
+    position: relative;
+    left: 0;
+    width: 50px;
+    border: 2px solid #a9a9a9;
+}
+
+.order_addons input[type=submit] {
+    position: unset;
+    left: 25px;
+}
+
+.order_display_image {
+    float: left;
+    border: 5px solid #a9a9a9;
+}

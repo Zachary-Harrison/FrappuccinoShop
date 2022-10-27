@@ -28,6 +28,7 @@ def update_balance(request):
 def home(request):
     accounts = Account.objects.all()
     current_account = None
+    current_drink = None
     goto_page = 'menu'
     for account in accounts:
         if account.user == request.user:
@@ -48,9 +49,13 @@ def home(request):
             current_account.balance += 100
             current_account.save()
             goto_page = 'account'
+        for drink in drinks:
+            if request.POST.get(drink.name):
+                current_drink = drink
+                goto_page = 'order_page'
 
 
-    return render(request, 'home.html', {'account': current_account, 'drinks': drinks, 'ingredients': ingredients, 'goto_page': goto_page})
+    return render(request, 'home.html', {'account': current_account, 'drinks': drinks, 'ingredients': ingredients, 'goto_page': goto_page, 'current_drink': current_drink})
 
 
 def logon_page(request):
