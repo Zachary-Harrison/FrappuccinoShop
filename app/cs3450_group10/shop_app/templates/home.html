@@ -107,7 +107,7 @@
                     {% csrf_token %}
                     <ul class="order_addons">
                         {% for ingredient in ingredients %}
-                            <li> <input type="number" id="{{ingredient}}" value="0"> | {{ ingredient }}</li>
+                            <li> <input type="number" id="{{ingredient}}" value="{% if ingredient in current_drink.ingredients.all %}1{% else %}0{% endif %}"> | {{ ingredient }}</li>
                         {% endfor %}
                         <input type="submit" name="order_submit" value="Submit Order">
                     </ul>
