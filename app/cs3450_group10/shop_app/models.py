@@ -111,31 +111,13 @@ class Account(models.Model):
             if ingredientCount[i] > ingredientList[i].stock:
                 # 0 indicates that not enough ingredients are available in stock to submit the order
                 return 0
-        price = drink.price
-        drinkIngredients = drink.ingredients.all()
-        for i in range(len(ingredientCount)):
-            # if an ingredient is in the drink by default
-            if ingredientList[i] in drinkIngredients:
-                # Additional amount of the ingredient was added, increase price accordingly
-                if ingredientCount[i] > 1:
-                    # 50% markup
-                    price += (ingredientList[i].price * (ingredientCount - 1)) * 1.5
-                # the ingredient was removed, decrease price accordingly
-                elif ingredientCount < 1:
-                    price -= ingredientList[i].price
-            # an ingredient is not in the drink by default
-            else:
-                # 50% markup
-                price += (ingredientList[i].price * (ingredientCount)) * 1.5
-        if self.balance < price:
+        if self.balance < drink.price:
             # 1 indicates that the user submitting the order does not have the necessary funds to purchase the drink
             return 1
         for i in range(len(ingredientCount)):
             ingredientList[i].removeStock(ingredientCount[i])
-        self.balance -= price
-        self.save()
-        manager.balance += price
-        manager.save()
+        self.balance -= drink.price
+        manager.balance += drink.price
         order = Order(drink=drink, name=self.user.username)
         order.save()
         # 2 indicates the order was successfully submitted
