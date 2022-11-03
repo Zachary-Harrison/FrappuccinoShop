@@ -105,13 +105,24 @@
             <div style="background-color: rgba(155, 155, 155, 50); padding: 25px;">
                 <form method="POST">
                     {% csrf_token %}
-                    <ul class="order_addons">
+                    <table class="drink_addons">
+                        <tr>
+                            <th>Quantity</th>
+                            <th>Add On</th>
+                            <th>Cost</th>
+                        </tr>
                         {% for ingredient in ingredients %}
-                            <li> <input type="number" id="{{ingredient}}" value="{% if ingredient in current_drink.ingredients.all %}1{% else %}0{% endif %}"> | {{ ingredient }}</li>
+                        <tr>
+                            <td class="addon_quantity"><input type="number" id="{{ingredient}}" value="{% if ingredient in current_drink.ingredients.all %}1{% else %}0{% endif %}"></td>
+                            <td class="addon_title">{{ ingredient }}</td>
+                            <td class="addon_price">${{ ingredient.price }}</td>
+                        </tr>
                         {% endfor %}
-                        <input type="submit" name="order_submit" value="Submit Order">
-                    </ul>
+                    </table>
+                    <h3>Cost: $5.60</h3>
+                    <input type="submit" name="order_submit" value="Submit Order">
                 </form>
+                
             </div>
 
         </div>
@@ -129,7 +140,29 @@
         <div id="pay_div" style="display: none">
             <h1>Dan's Frappuccino Paradise</h1>
             <h4>Pay Page</h4>   
-            <button id="pay_employees_button">Pay All Employees</button>
+            <div class="inventory_container">
+                <form method="POST">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <th>Employee Username</th>
+                            <th>Hours Worked</th>
+                            <th>Hourly Wages</th>
+                        </tr>
+                        {% for user in all_accounts %}
+                            {% if user.user_type == "Employee" %}
+                                <tr>
+                                    <td>{{user}}</td>
+                                    <td>{{user.hours}}</td>
+                                    <td>$20.00 / hour</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                    <br>
+                    <input id="pay_employees_button" type="submit" name="pay_employees" value="Pay Employees">
+                </form>
+            </div>
         </div>
         {% endif %}
 
@@ -140,12 +173,22 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="inventory_container">
-                    <ul>
+                    <table>
+                        <tr>
+                            <th>Order Quantity</th>
+                            <th>Ingredient</th>
+                            <th>Current Stock</th>
+                        </tr>
                     {% for ingredient in ingredients %}
-                        <li><input type="number" id="{{ingredient}}" name="inventory_{{ingredient}}"> | {{ ingredient }} | {{ ingredient.stock }}</li>
+                        <tr>
+                            <td class="ingrediet_input"><input type="number" id="{{ingredient}}" name="inventory_{{ingredient}}" value="0"></td>
+                            <td class="ingredient_title">{{ ingredient }}</td>
+                            <td class="ingredient_stock">{{ ingredient.stock }}</td>
+                        </tr>
                     {% endfor %}
-                    </ul>
-                    <input type="submit" name="purchase_stock" value="Purchase Stock">
+                    </table> 
+                    <h2>Cost: $100.00</h2> 
+                    <input id="purchase_stock_button" type="submit" name="purchase_stock" value="Purchase Stock">
                 </div>
             </form>
         </div>
