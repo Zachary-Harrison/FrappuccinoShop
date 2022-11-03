@@ -77,41 +77,31 @@ In a web browser, navigate to http://localhost:3000/shop_app to view the app.
 <h3> Unit Testing </h3>
 <hr>
 
-#### Testing making a new order:
+In order to make sure that our database and functions were working properly unit tests were put in place.
+These unit tests test for the following:
+Drink model
+- Drink name
+- Drink price
+- Drink image
+Order model
+- Order name
+- Order drink
+Ingredient model
+- Ingredient name
+- Ingredient price
+- Ingredient quantity
+Store model
+- Store name
+Account model
+- Account name
+- Account password
+- Account user type
+- Account balance
 
-Navigate to testing folder and run make_test_order.py
+Run unit tests within the same directory as manage.py
+Run unit tests with the following command:
 
-> bash $ python3 make_test_order.py
-
-This should result in a order generated and will return "True" after reading the database and seeing the order in the order queue. Will return true or false and then delete the order from the queue.
-(Additional instruction may be involved when development cycle happens)
-
-#### Testing making a new manager:
-
-Navigate to testing folder and run make_test_manager.py
-
-> bash $ python3 make_test_manager.py
-
-This will return "True" after reading the database and seeing a new test manager added. Will delete the test manager after returning true or false so database is still accurate.
-(Additional instruction may be involved when development cycle happens)
-
-#### Testing making a new user:
-
-Navigate to testing folder and run make_test_user.py
-
-> bash $ python3 make_test_user.py
-
-This will return "True" after reading the database and seeing a new test user added. Will delete the test user after returning true or false so database is still accurate.
-(Additional instruction may be involved when development cycle happens)
-
-#### Testing payroll:
-
-Navigate to testing folder and run test_payroll.py
-
-> bash $ python3 test_payroll.py
-
-This will test payroll functionality in several steps including deducting payroll from manager account, zeroing the hours of employees, and making sure that all payrolls are properly saved as to be recalled on in case of failure. 
-(Additional instruction may be involved when development cycle happens)
+> bash $ python3 manage.py test shop_app
 
 ### System Testing Instructions
 
