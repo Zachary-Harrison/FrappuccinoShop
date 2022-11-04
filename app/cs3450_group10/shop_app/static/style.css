@@ -252,6 +252,10 @@ input[type=submit]:hover {
     border: 2px solid #a9a9a9;
 }
 
+.order_button {
+    border: 2px solid slateblue
+}
+
 .order_addons {
     list-style: none;
     display: inline;
@@ -273,5 +277,57 @@ input[type=submit]:hover {
 
 .order_display_image {
     float: left;
+    position: relative;
+    top: 25px;
     border: 5px solid #a9a9a9;
 }
+
+.ingredient_input {
+    width: 20%;
+}
+
+.ingredient_title {
+    width: 60%;
+}
+
+.ingredient_stock {
+    width: 20%;
+}
+
+table {
+    position: relative;
+    left: 5%;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+  }
+  
+  td, th {
+    border: 2px solid #333;
+    padding: 8px;
+  }
+
+  #purchase_stock_button {
+    left: 0;
+  }
+
+  #pay_employees_button {
+    left: 0;
+  }
+
+  .drink_addons {
+    width: 70%;
+    left: 2%;
+  }
+
+  .addon_quantity {
+    width: 20%;
+  }
+
+  .addon_title {
+    width: 60%
+  }
+
+  .addon_cost {
+    width: 20%
+  }
