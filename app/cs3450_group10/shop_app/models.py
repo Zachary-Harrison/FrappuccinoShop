@@ -25,22 +25,6 @@ class Account(models.Model):
     def __str__(self):
         return self.user.username
 
-    def get_user_type(self):
-        return self.user_type
-
-    def increaseBalance(self):
-        self.balance += 100
-
-    def makeDrinkFor(self, store, menu, drink, customer):
-        # make sure drink exists
-        if menu.drinkExists(drink):
-            customer.balance -= drink.price
-            store.changeInventory(drink.ingredients)
-        else:
-            print(drink.name, "not found")
-            raise RuntimeError
-        return
-
     def addHours(self, hours):
         if self.user_type != Account.Type.EMPLOYEE:
             # 0 indicates that a non-employee tried to add hours, only employees can add hours worked
@@ -178,21 +162,3 @@ class Order(models.Model):
         self.delete()
         # 1 indicates the order has been fulfilled successfully
         return 1
-
-
-
-class Store(models.Model):
-    name = models.CharField(max_length=100)
-    users = models.QuerySet(model=User)
-    menu = models.QuerySet(model=Drink)
-    inventory = models.QuerySet(model=Ingredient)
-
-    def __str__(self):
-        return self.name
-
-    def getMenu(self):
-        return menu
-
-    # TODO: implement this method
-    def changeInventory(self):
-        return
