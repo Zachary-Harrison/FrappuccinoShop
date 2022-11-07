@@ -111,15 +111,36 @@
                             <th>Add On</th>
                             <th>Cost</th>
                         </tr>
+                        <script>
+                            window.cost = parseFloat("{{ current_drink.price }}")
+                            console.log(window.cost)
+                            window.quant_list = {}
+                            window.price_list = {}
+
+                            function increaseCost(ingredient_name) {
+                                window.cost -= window.quant_list[ingredient_name] * window.price_list[ingredient_name]
+                                window.quant_list[ingredient_name] = document.getElementById(ingredient_name).value
+                                window.cost += window.quant_list[ingredient_name] * window.price_list[ingredient_name]
+                                document.getElementById('cost_display').innerHTML = "$" + window.cost.toFixed(2)
+                            }
+                        </script>
                         {% for ingredient in ingredients %}
                         <tr>
-                            <td class="addon_quantity"><input type="number" id="{{ingredient}}" value="{% if ingredient in current_drink.ingredients.all %}1{% else %}0{% endif %}"></td>
+                            <td class="addon_quantity"><input type="number" id="{{ingredient}}" onchange="increaseCost(this.id)" value="{% if ingredient in current_drink.ingredients.all %}1{% else %}0{% endif %}"></td>
                             <td class="addon_title">{{ ingredient }}</td>
                             <td class="addon_price">${{ ingredient.price }}</td>
+                            <script>
+                                window.quant_list['{{ingredient}}'] = document.getElementById("{{ingredient}}").value
+                                window.price_list['{{ingredient}}'] = parseFloat("{{ingredient.price}}")
+                                window.cost += window.quant_list['{{ingredient}}'] * window.price_list['{{ingredient}}']
+                            </script>
                         </tr>
                         {% endfor %}
                     </table>
-                    <h3>Cost: $5.60</h3>
+                    <h3 id="cost_display"></h3>
+                    <script>
+                        document.getElementById('cost_display').innerHTML = "$" + window.cost.toFixed(2)
+                    </script>
                     <input type="submit" name="order_submit" value="Submit Order">
                 </form>
                 
