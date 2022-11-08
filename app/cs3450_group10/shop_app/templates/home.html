@@ -55,6 +55,9 @@
             <div class="account_container">
                 <h4>Username: {{ account }}</h4> 
                 <h4>Current Balance: {{ account.balance }}</h4>
+                {% if account.user_type == "Employee" %}
+                <h4>Current Hours: {{ account.hours }} </h4>
+                {% endif %}
                 <form method="POST" actions="">
                     {% csrf_token %}
                     <br>
@@ -67,14 +70,27 @@
                     <input type="submit" name="increase_balance" value="Increase Balance By $100">
                 </form>
                 <br>
+                <br>
+                
                 {% if account.user_type == "Employee" %}
-                <a href="" class="balance_change">Increase Hours Worked by 4 hours</a>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="submit" name="increase_hours" value="Add 4 hours to Timecard">
+                </form>
                 {% endif %}
+
                 {% if account.user_type == "Manager" %}
-                <div class="input_box"><input type="text" name="employee_name" placeholder="Employee Name"></div>
-                <a href="" class="balance_change">Hire Employee</a>
-                <a href="" class="balance_change">Fire Employee</a>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="account_type_change" placeholder="Employee Name">
+                    <br><br>
+                    <input type="submit" name="hire_employee" value="Hire Employee">
+                    <br>
+                    <input type="submit" name="fire_employee" value="Fire Employee">
+                </form>
                 {% endif %}
+
+                
             </div>
         </div>
 
@@ -121,7 +137,7 @@
                                 window.cost -= window.quant_list[ingredient_name] * window.price_list[ingredient_name]
                                 window.quant_list[ingredient_name] = document.getElementById(ingredient_name).value
                                 window.cost += window.quant_list[ingredient_name] * window.price_list[ingredient_name]
-                                document.getElementById('cost_display').innerHTML = "$" + window.cost.toFixed(2)
+                                document.getElementById('cost_display').innerHTML = "Current Balance: {{ account.balance }} | Cost: $" + window.cost.toFixed(2)
                             }
                         </script>
                         {% for ingredient in ingredients %}
@@ -139,9 +155,9 @@
                     </table>
                     <h3 id="cost_display"></h3>
                     <script>
-                        document.getElementById('cost_display').innerHTML = "$" + window.cost.toFixed(2)
+                        document.getElementById('cost_display').innerHTML = "Current Balance: {{ account.balance }} | Cost: $" + window.cost.toFixed(2)
                     </script>
-                    <input type="submit" name="order_submit" value="Submit Order">
+                    <input type="submit" class="order_submit" name="order_submit" value="Submit Order">
                 </form>
                 
             </div>
@@ -181,6 +197,7 @@
                         {% endfor %}
                     </table>
                     <br>
+                    <h2>Current Balance: {{ account.balance }}</h2>
                     <input id="pay_employees_button" type="submit" name="pay_employees" value="Pay Employees">
                 </form>
             </div>
@@ -191,24 +208,52 @@
         <div id="stock_div" style="display: none">
             <h1>Dan's Frappuccino Paradise</h1>
             <h4>Inventory</h4>
+            <script>
+                window.stock_cost = 0
+                window.item_cost_list = {}
+                window.stock_quant_list = {}
+                window.stock_price_list = {}
+
+                function increaseStockCost(ingredient_name) {
+                    ingredient_name = ingredient_name.substring(0, ingredient_name.length - 6)
+                    console.log(ingredient_name)
+                    window.stock_cost -= window.item_cost_list[ingredient_name] 
+
+                    window.stock_quant_list[ingredient_name] = document.getElementById(ingredient_name + "_order").value
+                    console.log(stock_quant_list)
+                    window.item_cost_list[ingredient_name] = window.stock_quant_list[ingredient_name] * window.stock_price_list[ingredient_name]
+
+                    window.stock_cost += window.item_cost_list[ingredient_name]
+
+                    document.getElementById(ingredient_name + '_cost').innerHTML = "$" + window.item_cost_list[ingredient_name]
+                    document.getElementById('stock_cost_display').innerHTML = "Current Balance: {{ account.balance }} | Total Cost: $" + window.stock_cost.toFixed(2)
+                }
+            </script>
             <form method="POST">
                 {% csrf_token %}
                 <div class="inventory_container">
                     <table>
                         <tr>
-                            <th>Order Quantity</th>
                             <th>Ingredient</th>
                             <th>Current Stock</th>
+                            <th>Order Quantity</th>
+                            <th>Cost</th>
                         </tr>
                     {% for ingredient in ingredients %}
                         <tr>
-                            <td class="ingrediet_input"><input type="number" id="{{ingredient}}" name="inventory_{{ingredient}}" value="0"></td>
                             <td class="ingredient_title">{{ ingredient }}</td>
                             <td class="ingredient_stock">{{ ingredient.stock }}</td>
+                            <td class="ingrediet_input"><input type="number" onchange="increaseStockCost(this.id)" id="{{ingredient}}_order" name="inventory_{{ingredient}}" value="0"></td>
+                            <td class="ingredient_cost" id="{{ingredient}}_cost">$0</td>
                         </tr>
+                        <script>
+                            window.stock_quant_list['{{ingredient}}'] = document.getElementById("{{ingredient}}_order").value
+                            window.stock_price_list['{{ingredient}}'] = parseFloat("{{ingredient.price}}")
+                            window.item_cost_list['{{ingredient}}'] = window.stock_quant_list['{{ingredient}}'] * window.stock_price_list['{{ingredient}}']
+                        </script>
                     {% endfor %}
                     </table> 
-                    <h2>Cost: $100.00</h2> 
+                    <h2 id="stock_cost_display">Current Balance: {{ account.balance }} | Total Cost: $0.00</h2> 
                     <input id="purchase_stock_button" type="submit" name="purchase_stock" value="Purchase Stock">
                 </div>
             </form>
@@ -220,6 +265,10 @@
             <script>settingsNav()</script>
         {% elif goto_page == 'order_page' %}
             <script>drinkPageNav()</script>
+        {% elif goto_page == 'inventory' %}
+            <script>stockNav()</script>
+        {% elif goto_page == 'payroll' %}
+            <script>payNav()</script>
         {% endif %}
 
     </body>

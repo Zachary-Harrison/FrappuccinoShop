@@ -102,23 +102,12 @@ body {
     position: relative;
     top: 20px;
     left: 15%;
-    height: auto;
+    height: 100%;
     padding-top: 20px;
     padding-bottom: 50px;
     width: 70%;
     background-color: rgba(155, 155, 155, 50);
 }
-
-.account_container a {
-    background-color: #333;
-    display: block;
-    color: white;
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-decoration: none;
-}
-
 
 .balance_change {
     border: 2px solid #a9a9a9;
@@ -128,9 +117,6 @@ body {
     width: 33.34%;
 }
 
-.account_container a:hover {
-    background-color: slateblue;
-}
 
 h1 {
     font-size: 40pt;
@@ -270,11 +256,6 @@ input[type=submit]:hover {
     border: 2px solid #a9a9a9;
 }
 
-.order_addons input[type=submit] {
-    position: unset;
-    left: 25px;
-}
-
 .order_display_image {
     float: left;
     position: relative;
@@ -282,16 +263,26 @@ input[type=submit]:hover {
     border: 5px solid #a9a9a9;
 }
 
+.order_submit {
+    position: relative;
+    width: 33%;
+    left: 25%;
+}
+
 .ingredient_input {
     width: 20%;
 }
 
 .ingredient_title {
-    width: 60%;
+    width: 40%;
 }
 
 .ingredient_stock {
     width: 20%;
+}
+
+.ingredient_cost {
+    width: 20%
 }
 
 table {
@@ -304,13 +295,13 @@ table {
   
   td, th {
     border: 2px solid #333;
-    padding: 8px;
+    height: 15px;
   }
 
   #purchase_stock_button {
     left: 0;
   }
-
+ 
   #pay_employees_button {
     left: 0;
   }
