@@ -53,13 +53,32 @@ def home(request):
             if request.POST.get(drink.name):
                 current_drink = drink
                 goto_page = 'order_page'
-
+        if request.POST.get("hire_employee"):
+            employee_username = request.POST.get('account_type_change')
+            current_account.hireEmployee(employee_username)
+            accounts = Account.objects.all()
+            goto_page = 'account'
+        if request.POST.get("fire_employee"):
+            employee_username = request.POST.get('account_type_change')
+            current_account.fireEmployee(employee_username)
+            accounts = Account.objects.all()
+            goto_page = 'account'
+        if request.POST.get("increase_hours"):
+            current_account.addHours(4)
+            goto_page = 'account'
+        if request.POST.get("purchase_stock"):
+            for ingredient in ingredients:
+                ingredient.addStock(int(request.POST.get('inventory_' + ingredient.name)), current_account)
+            goto_page = 'inventory'
+        if request.POST.get("pay_employees"):
+            print(current_account.payEmployees())
+            accounts = Account.objects.all()
+            goto_page = 'payroll'
 
     return render(request, 'home.html', {'account': current_account, 'all_accounts': accounts, 'drinks': drinks, 'ingredients': ingredients, 'goto_page': goto_page, 'current_drink': current_drink, 'orders': orders})
 
 
 def logon_page(request):
-    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')

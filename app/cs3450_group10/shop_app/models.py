@@ -30,6 +30,7 @@ class Account(models.Model):
             # 0 indicates that a non-employee tried to add hours, only employees can add hours worked
             return 0
         self.hours += hours
+        self.save()
         # 1 indicates that the employee successfully added their hours
         return 1
 
@@ -44,6 +45,7 @@ class Account(models.Model):
                     # 1 indicates the user exists, but they are not a customer, only customers can be hired
                     return 1
                 account.user_type = Account.Type.EMPLOYEE
+                account.save()
                 # 2 indicates the user exists and they have been successfully hired as an employee
                 return 2
         # 3 indicates that no such user exists with the name provided
@@ -60,6 +62,7 @@ class Account(models.Model):
                     # 1 indicates the user exists, but they are not a employee, only employees can be fired
                     return 1
                 account.user_type = Account.Type.CUSTOMER
+                account.save()
                 # 2 indicates the user exists and they have been successfully fired, demoted to customer status
                 return 2
         # 3 indicates that no such user exists with the name provided
@@ -69,7 +72,7 @@ class Account(models.Model):
         # Employees will be paid $20/hr
         wage = 20
         if self.user_type != Account.Type.MANAGER:
-            # 0 indicates that a non manager is attempting to hire, which should not be allowed
+            # 0 indicates that a non manager is attempting to pay employees, which should not be allowed
             return 0
         accountsList = Account.objects.all()
         for account in accountsList:
@@ -83,7 +86,9 @@ class Account(models.Model):
                     return 1
                 account.hours = 0
                 account.balance += paycheck
+                account.save()
                 self.balance -= paycheck
+                self.save()
         # 2 indicates that all employees were successfully paid
         return 2
 
@@ -121,13 +126,10 @@ class Ingredient(models.Model):
 
     # amount should be an integer, user is an instance of our Account model
     def addStock(self, amount, user):
-        if user.user_type != User.Type.MANAGER:
+        if user.user_type != Account.Type.MANAGER:
             """0 indicates the user attempting to add to the ingredient is not a manager, the request should not be
             completed, and a warning should be issued """
             return 0
-        if not amount.isnumeric():
-            # 1 indicates the amount to increase stock by is not a number
-            return 1
         totalCost = self.price * amount
         if totalCost > user.balance:
             # 2 indicates the manager does not have enough money in their account to make the purchase
@@ -139,6 +141,7 @@ class Ingredient(models.Model):
 
     def removeStock(self, amount):
         self.stock -= amount
+        self.save()
 
 
 class Drink(models.Model):
