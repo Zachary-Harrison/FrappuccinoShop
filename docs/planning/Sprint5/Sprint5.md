@@ -4,7 +4,7 @@
 
 - When the sprint ends
 
-October 31, 2022
+November 14, 2022
 
 - How many hours you have to work on this project this sprint
 
