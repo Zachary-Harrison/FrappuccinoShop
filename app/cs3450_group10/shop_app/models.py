@@ -100,20 +100,49 @@ class Account(models.Model):
             if ingredientCount[i] > ingredientList[i].stock:
                 # 0 indicates that not enough ingredients are available in stock to submit the order
                 return 0
-        if self.balance < drink.price:
+        price = drink.price
+
+        # update order price based on included ingredients, added ingredients have 50% markup from ingredient base price
+        for i in range(len(ingredientCount)):
+            if ingredientList[i] in drink.ingredients:
+                # subtract ingredient price if ingredient normally in drink is removed
+                if ingredientCount[i] < 1:
+                    price -= ingredientList[i].price
+                elif ingredientCount[i] > 1:
+                # increase price if more than one instance of an ingredient normally in drink is added
+                    price += ingredientList[i].price * 1.5
+            else:
+                # increase price if an ingredient not normally in the drink is added
+                if ingredientCount[i] > 0:
+                    price += ingredientList[i].price * 1.5
+
+        if self.balance < price:
             # 1 indicates that the user submitting the order does not have the necessary funds to purchase the drink
             return 1
+
+        # remove stock, checking that ingredients in the drink are a positive number
         for i in range(len(ingredientCount)):
-            ingredientList[i].removeStock(ingredientCount[i])
+            if ingredientCount[i] > 0:
+                ingredientList[i].removeStock(ingredientCount[i])
+
+        '''NOAH UPDATE HERE'''
+        '''Adding ingredients to JSON Field here?'''
+        ingredientsJSON = {}
+        #for i in range(len(ingredientCount)):
+            #add ingredientCount[i] to JSON object
+        '''END NOAH UPDATE HERE'''
+
+        order = Order(drink=drink, name=self.user.username, price=price, ingredientsCount=ingredientsJSON)
+        order.save()
+
+        for i in range(len(ingredientCount)):
+            order.ingredients.add(ingredientList[i])
+
+        order.save()
         self.balance -= drink.price
         manager.balance += drink.price
-        order = Order(drink=drink, name=self.user.username)
-        order.save()
         # 2 indicates the order was successfully submitted
         return 2
-
-    def changeInventory(self, store, drink):
-        store.changeInventory(drink.ingredients)
 
 
 class Ingredient(models.Model):
@@ -157,6 +186,9 @@ class Drink(models.Model):
 class Order(models.Model):
     drink = models.ForeignKey(Drink, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=100, null=True)
+    price = models.DecimalField(max_digits=14, decimal_places=2)
+    ingredientsCount = models.JSONField()
+    ingredients = models.ManyToManyField(Ingredient)
 
     def fulfill(self, user):
         if user.user_type == User.Type.CUSTOMER:
