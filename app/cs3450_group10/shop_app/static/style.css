@@ -322,3 +322,8 @@ table {
   .addon_cost {
     width: 20%
   }
+
+  .order_fulfill {
+    width: 50%;
+    left: 25%;
+  }
