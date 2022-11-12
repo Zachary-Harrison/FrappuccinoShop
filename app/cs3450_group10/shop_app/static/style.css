@@ -266,7 +266,17 @@ input[type=submit]:hover {
 .order_submit {
     position: relative;
     width: 33%;
-    left: 25%;
+    left: 0%;
+}
+.customer_username {
+    position: relative;
+    width: 33%;
+    left: 0%;
+}
+.customer_order_submit {
+    position: relative;
+    width: 33%;
+    left: 0;
 }
 
 .ingredient_input {
