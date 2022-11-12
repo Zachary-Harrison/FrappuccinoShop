@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from shop_app.models import Account, Drink, Ingredient, Order
 from django.contrib.auth.models import User
+import json
+import random
 
 from .forms import CreateUserForm
 
@@ -36,6 +38,8 @@ def home(request):
     drinks = Drink.objects.all()
     ingredients = Ingredient.objects.all()
     orders = Order.objects.all()
+
+
 
     if request.method == "POST":
         if request.POST.get("update_username"):
@@ -74,8 +78,52 @@ def home(request):
             print(current_account.payEmployees())
             accounts = Account.objects.all()
             goto_page = 'payroll'
+        if request.POST.get("order_submit"):
+            ingredientCount = {}
+            for ingredient in ingredients:
+                ingredientCount[ingredient.name] = int(request.POST.get(ingredient.name))
 
-    return render(request, 'home.html', {'account': current_account, 'all_accounts': accounts, 'drinks': drinks, 'ingredients': ingredients, 'goto_page': goto_page, 'current_drink': current_drink, 'orders': orders})
+            manager = ''
+            for account in accounts:
+                if account.user_type == 'Manager':
+                    manager = account
+
+            drink_name = request.POST.get("drink_name")
+            drink_object = ''
+            for drink in drinks:
+                if drink.name == drink_name:
+                    drink_object = drink
+
+            while True:
+                orderID = random.randint(-32000, 32000)
+                for order in orders:
+                    if order.orderNum == orderID:
+                        continue
+                break
+
+            current_account.orderDrink(drink_object, ingredientCount, manager, orderID) 
+            accounts = Account.objects.all()  
+            orders = Order.objects.all()       
+
+        if request.POST.get('order_fulfill'):
+            orderNum = int(request.POST.get('order_id'))
+            for order in orders:
+                print()
+                print(order.orderNum)
+                if orderNum == order.orderNum:
+                    selected_order = order
+                    selected_order.fulfill(current_account)
+                    break
+            orders = Order.objects.all() 
+            accounts = Account.objects.all()  
+            goto_page = 'cash_register'     
+            
+        
+    all_order_ingredients = {}
+    for order in orders:
+        all_order_ingredients[order.orderNum] = json.loads(order.ingredientsCount)
+
+    return render(request, 'home.html', {'account': current_account, 'all_accounts': accounts, 'drinks': drinks, 'ingredients': ingredients, 'goto_page': goto_page, 'current_drink': current_drink, 'orders': orders, 'all_order_ingredients': all_order_ingredients})
 
 
 def logon_page(request):

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+import random
+import json
 
 
 # Password encryption is handled when a Customer/Employee/Manager instance is created Passwords stored in the models
@@ -94,53 +96,37 @@ class Account(models.Model):
 
     # drink is an instance of the Drink model, ingredientCount is an array containing the number of each ingredient
     # to include in the order, manager is the manager of the store and will obtain the money from the order
-    def orderDrink(self, drink, ingredientCount, manager):
+    def orderDrink(self, drink, ingredientCount, manager, orderID):
         ingredientList = Ingredient.objects.all()
-        for i in range(len(ingredientCount)):
-            if ingredientCount[i] > ingredientList[i].stock:
-                # 0 indicates that not enough ingredients are available in stock to submit the order
+        for ingredient in ingredientList:
+            if ingredientCount[ingredient.name] > ingredient.stock:
                 return 0
+                
         price = drink.price
-
         # update order price based on included ingredients, added ingredients have 50% markup from ingredient base price
-        for i in range(len(ingredientCount)):
-            if ingredientList[i] in drink.ingredients:
-                # subtract ingredient price if ingredient normally in drink is removed
-                if ingredientCount[i] < 1:
-                    price -= ingredientList[i].price
-                elif ingredientCount[i] > 1:
-                # increase price if more than one instance of an ingredient normally in drink is added
-                    price += ingredientList[i].price * 1.5
-            else:
-                # increase price if an ingredient not normally in the drink is added
-                if ingredientCount[i] > 0:
-                    price += ingredientList[i].price * 1.5
+        for ingredient in ingredientList:
+            # subtract ingredient price if ingredient normally in drink is removed
+            if ingredientCount[ingredient.name] > 0:
+                price += ingredient.price * ingredientCount[ingredient.name]
 
         if self.balance < price:
             # 1 indicates that the user submitting the order does not have the necessary funds to purchase the drink
             return 1
 
         # remove stock, checking that ingredients in the drink are a positive number
-        for i in range(len(ingredientCount)):
-            if ingredientCount[i] > 0:
-                ingredientList[i].removeStock(ingredientCount[i])
+        for ingredient in ingredientList:
+            if ingredientCount[ingredient.name] > 0:
+                ingredient.removeStock(ingredientCount[ingredient.name])
 
-        '''NOAH UPDATE HERE'''
-        '''Adding ingredients to JSON Field here?'''
-        ingredientsJSON = {}
-        #for i in range(len(ingredientCount)):
-            #add ingredientCount[i] to JSON object
-        '''END NOAH UPDATE HERE'''
+        ingredientsJSON = json.dumps(ingredientCount)
 
-        order = Order(drink=drink, name=self.user.username, price=price, ingredientsCount=ingredientsJSON)
+        order = Order(orderNum=orderID , drink=drink, name=self.user.username, price=price, ingredientsCount=ingredientsJSON)
         order.save()
 
-        for i in range(len(ingredientCount)):
-            order.ingredients.add(ingredientList[i])
-
-        order.save()
         self.balance -= drink.price
+        self.save()
         manager.balance += drink.price
+        manager.save()
         # 2 indicates the order was successfully submitted
         return 2
 
@@ -184,14 +170,14 @@ class Drink(models.Model):
 
 
 class Order(models.Model):
+    orderNum = models.IntegerField(default=0)
     drink = models.ForeignKey(Drink, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=100, null=True)
-    price = models.DecimalField(max_digits=14, decimal_places=2)
-    ingredientsCount = models.JSONField()
-    ingredients = models.ManyToManyField(Ingredient)
+    price = models.DecimalField(max_digits=14, decimal_places=2, null=True)
+    ingredientsCount = models.JSONField(default=dict)
 
     def fulfill(self, user):
-        if user.user_type == User.Type.CUSTOMER:
+        if user.user_type == Account.Type.CUSTOMER:
             # 0 indicates the user attempting to fulfill the order is a customer, and should not be allowed to do so
             return 0
         self.delete()
