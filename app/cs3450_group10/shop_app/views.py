@@ -78,7 +78,19 @@ def home(request):
             print(current_account.payEmployees())
             accounts = Account.objects.all()
             goto_page = 'payroll'
-        if request.POST.get("order_submit"):
+        if request.POST.get("order_submit") or request.POST.get("customer_order_submit"):
+            order_account = ''
+            if request.POST.get("order_submit"):
+                order_account = current_account
+            elif request.POST.get("customer_order_submit"):
+                order_username = request.POST.get("submission_username")
+                for account in accounts:
+                    if account.user.username == order_username:
+                        order_account = account
+                if order_account == '':
+                    return 0
+
+
             ingredientCount = {}
             for ingredient in ingredients:
                 ingredientCount[ingredient.name] = int(request.POST.get(ingredient.name))
@@ -101,10 +113,10 @@ def home(request):
                         continue
                 break
 
-            current_account.orderDrink(drink_object, ingredientCount, manager, orderID) 
+            order_account.orderDrink(drink_object, ingredientCount, manager, orderID) 
             accounts = Account.objects.all()  
             orders = Order.objects.all()       
-
+        
         if request.POST.get('order_fulfill'):
             orderNum = int(request.POST.get('order_id'))
             for order in orders:

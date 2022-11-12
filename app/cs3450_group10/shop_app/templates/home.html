@@ -162,7 +162,12 @@
                     <script>
                         document.getElementById('cost_display').innerHTML = "Current Balance: {{ account.balance }} | Cost: $" + window.cost.toFixed(2)
                     </script>
-                    <input type="submit" class="order_submit" name="order_submit" value="Submit Order">
+                    {%  if account.user_type != "Customer" %}
+                    <input type="text" class="customer_username" name="submission_username" placeholder="Customer Username">
+                    <br>
+                    <input type="submit" class="customer_order_submit" name="customer_order_submit" value="Submit Order for Customer">
+                    {% endif %}
+                    <input type="submit" class="order_submit" name="order_submit" value="Submit Order {%  if account.user_type != 'Customer' %}for Self {% endif %}">
                 </form>
                 
             </div>
