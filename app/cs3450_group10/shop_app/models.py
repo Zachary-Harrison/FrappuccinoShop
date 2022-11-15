@@ -103,11 +103,13 @@ class Account(models.Model):
                 return 0
                 
         price = drink.price
+        print(price)
         # update order price based on included ingredients, added ingredients have 50% markup from ingredient base price
         for ingredient in ingredientList:
             # subtract ingredient price if ingredient normally in drink is removed
             if ingredientCount[ingredient.name] > 0:
                 price += ingredient.price * ingredientCount[ingredient.name]
+                print(price)
 
         if self.balance < price:
             # 1 indicates that the user submitting the order does not have the necessary funds to purchase the drink
@@ -123,9 +125,9 @@ class Account(models.Model):
         order = Order(orderNum=orderID , drink=drink, name=self.user.username, price=price, ingredientsCount=ingredientsJSON)
         order.save()
 
-        self.balance -= drink.price
+        self.balance -= price
         self.save()
-        manager.balance += drink.price
+        manager.balance += price
         manager.save()
         # 2 indicates the order was successfully submitted
         return 2
