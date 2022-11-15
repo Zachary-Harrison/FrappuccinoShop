@@ -112,16 +112,14 @@ def home(request):
                     if order.orderNum == orderID:
                         continue
                 break
-
             order_account.orderDrink(drink_object, ingredientCount, manager, orderID) 
             accounts = Account.objects.all()  
-            orders = Order.objects.all()       
+            orders = Order.objects.all()  
+            ingredients = Ingredient.objects.all()     
         
         if request.POST.get('order_fulfill'):
             orderNum = int(request.POST.get('order_id'))
             for order in orders:
-                print()
-                print(order.orderNum)
                 if orderNum == order.orderNum:
                     selected_order = order
                     selected_order.fulfill(current_account)
