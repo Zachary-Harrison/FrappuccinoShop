@@ -77,8 +77,18 @@ In a web browser, navigate to http://localhost:3000/shop_app to view the app.
 <h3> Unit Testing </h3>
 <hr>
 
-In order to make sure that our database and functions were working properly unit tests were put in place.
-These unit tests test for the following:
+In order to make sure that our database and functions were working properly unit tests were put in place. These unit tests build objects and put them into the database, then call them to make sure that they are functioning as intended. When you run your tests, the default behavior of the test utility is to find all the test cases (that is, subclasses of unittest.TestCase) in any file whose name begins with test, automatically build a test suite out of those test cases, and run that suite.Test discovery is based on the unittest module’s built-in test discovery. By default, this will discover tests in any file named test*.py under the current working directory.
+
+You can specify particular tests to run by supplying any number of “test labels” to ./manage.py test. Each test label can be a full Python dotted path to a package, module, TestCase subclass, or test method.
+
+To read more about the documentation, follow this link https://docs.djangoproject.com/en/4.1/topics/testing/overview/
+
+Run unit tests within the same directory as manage.py
+Run unit tests with the following command:
+
+> bash $ python3 manage.py test shop_app
+
+By default our tests test for:
 Drink model
 - Drink name
 - Drink price
@@ -90,18 +100,13 @@ Ingredient model
 - Ingredient name
 - Ingredient price
 - Ingredient quantity
-Store model
-- Store name
 Account model
 - Account name
 - Account password
 - Account user type
 - Account balance
 
-Run unit tests within the same directory as manage.py
-Run unit tests with the following command:
 
-> bash $ python3 manage.py test shop_app
 
 ### System Testing Instructions
 

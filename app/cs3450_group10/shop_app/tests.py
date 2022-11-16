@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.db import models
-from .models import Drink, Order, Ingredient, Store, Account, User
+from .models import Drink, Order, Ingredient, Account, User
 # Create your tests here.
 
 
@@ -10,13 +10,13 @@ class DrinkTestCase(TestCase):
         Drink.objects.create(name="Test Drink", price=10.00, image="test.png")
         Order.objects.create(name="Test Order", drink=Drink.objects.get(name="Test Drink"))
         Ingredient.objects.create(name="Test Ingredient", price=10.00, stock=10)
-        Store.objects.create(name="Test Store")
+        
         
     def tearDown(self):
         Drink.objects.all().delete()
         Order.objects.all().delete()
         Ingredient.objects.all().delete()
-        Store.objects.all().delete()
+        
         
 
     def test_drink_name(self):
@@ -59,10 +59,7 @@ class DrinkTestCase(TestCase):
         ingredient = Ingredient.objects.get(name="Test Ingredient")
         self.assertEqual(ingredient.stock, 10)
 
-    def test_store_name(self):
-        #print("Testing store name")
-        store = Store.objects.get(name="Test Store")
-        self.assertEqual(store.name, "Test Store")
+   
 
 
 class AccountTestCase(TestCase):
