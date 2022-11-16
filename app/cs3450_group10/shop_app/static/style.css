@@ -182,12 +182,13 @@ input[type=submit]:hover {
 
 .menu_container {
     position: relative;
-    width: 70%;
+    width: 80%;
     height: auto;
     top: 10px;
     padding-bottom: 20px;
     padding-top: 20px;
-    left: 15%;
+    left: 10%;
+    align-self: center;
     background-color: rgba(155, 155, 155, 50);
 }
 
