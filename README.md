@@ -26,6 +26,7 @@ Collaborators must fork the repository found at Zachary-Harrison/cs3450-group10.
 The forked repository must then be cloned.  After completing any work, collaborators
 should submit a pull request so that all progress is documented and issues may be discussed.
 Commit messages should be clear to assist in task control.
+
 <h3>Tool Stack Description and Setup Procedure</h3>
 <hr>
 Django - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Automates webserving, database handling, encryption, and more. See install instructions below in "Build Instructions".
@@ -36,6 +37,7 @@ Python3 - Python is a high-level, general-purpose programming language. Its desi
 
 JavaScript - JavaScript is a scripting or programming language that allows you to implement complex features on web pages displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. This will assist in making the site aesthetically pleasing and provide
 some additional functionality.
+
 <h3>Build Instructions - Linux and MacOS</h3>
 <hr>
 Download Python 3 here :
@@ -90,23 +92,22 @@ Run unit tests with the following command:
 
 By default our tests test for:
 Drink model
+
 - Drink name
 - Drink price
 - Drink image
-Order model
+  Order model
 - Order name
 - Order drink
-Ingredient model
+  Ingredient model
 - Ingredient name
 - Ingredient price
 - Ingredient quantity
-Account model
+  Account model
 - Account name
 - Account password
 - Account user type
 - Account balance
-
-
 
 ### System Testing Instructions
 
@@ -144,7 +145,9 @@ Should result in the shop page.
 - [Requirements Definition](docs/RequirementsDefinition.md)
 - [Low Fidelity Prototype](docs/LowFidelityProtoInstructions.md)
 - [High Fidelity Prototype](docs/HighFidelityProtoInstructions.md)
-
+- [PowerPoint Presentation](docs/presentation/CS3450-Group10-Presentation.pptx)
+- [4 screen capture videos](videos/)
+- [Five color Burn-down chart of the entire project](docs/presentation/5color_project_burndown.png)
 
 ***
 
@@ -157,4 +160,3 @@ Should result in the shop page.
 - (Under Development) = Is currently undergoing development
 - (Scrapped) = No longer planning to be a feature
 - (Deprecated) = Will not be receiving updates, feature is finished and further support will be extremely limited
-
