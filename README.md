@@ -41,6 +41,30 @@ some additional functionality.
 You need to download [python3](https://www.python.org/downloads/https://www.python.org/downloads/) to run this application. 
 > **Note**: this will also download pip3, which you will see being used in the below commands.
 
+#### Windows
+
+1. Install Django via pip3
+   ```bash
+   pip3 install django
+   ```
+2. Install psycopg2
+   ```bash
+   pip3 install libpq-dev postgresql
+   ```
+3. Clone the project.
+   ```bash
+   git clone https://github.com/Zachary-Harrison/cs3450-group10
+   ```
+4. Navigate to the project sub-folder.
+   ```bash
+   cd FrappuccinoShop/app/cs3450_group10
+   ```
+5. Run the server using the following command. (3000 is port, this is changable)
+   ```bash
+   python3 manage.py runserver 3000
+   ```
+6. In a web browser, navigate to http://localhost:3000/shop_app. If you changed the port number, be sure to replace "3000" with the right port number.
+
 #### Linux
 
 1. Install Django via pip3
