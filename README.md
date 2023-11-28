@@ -1,10 +1,8 @@
 # Dans Frappuccino Paradise Shop Application
 
-***
+---
 
 ### Workspace Layout
-
-***
 
 Dan's Frappuccino Paradise Shop Web App will be stored on this repository.
 
@@ -18,64 +16,85 @@ be added as the project progresses.
 
 The code for the application and server will be kept in the "app" folder.
 
-### Version-Control Procedures
+---
 
-***
+### Version-Control Procedures
 
 Collaborators must fork the repository found at Zachary-Harrison/cs3450-group10.
 The forked repository must then be cloned.  After completing any work, collaborators
 should submit a pull request so that all progress is documented and issues may be discussed.
 Commit messages should be clear to assist in task control.
-<h3>Tool Stack Description and Setup Procedure</h3>
-<hr>
-Django - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Automates webserving, database handling, encryption, and more. See install instructions below in "Build Instructions".
-</br>
 
-Python3 - Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming. Most team members are familiar with Python and it is very effective for background processes. Download Python 3 here https://www.python.org/downloads/.
-</br>
+---
 
-JavaScript - JavaScript is a scripting or programming language that allows you to implement complex features on web pages displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. This will assist in making the site aesthetically pleasing and provide
+### Tool Stack Description and Setup Procedure
+
+- Django - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Automates webserving, database handling, encryption, and more. See install instructions below in "Build Instructions".
+- Python3 - Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming. Most team members are familiar with Python and it is very effective for background processes. Download Python 3 here https://www.python.org/downloads/.
+- JavaScript - JavaScript is a scripting or programming language that allows you to implement complex features on web pages displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. This will assist in making the site aesthetically pleasing and provide
 some additional functionality.
-<h3>Build Instructions - Linux and MacOS</h3>
-<hr>
-Download Python 3 here :
-https://www.python.org/downloads/
 
-Clone the project.
+---
 
-> bash $ git clone https://github.com/Zachary-Harrison/cs3450-group10
+### Build Instructions
 
-Install Django via pip3
+You need to download [python3](https://www.python.org/downloads/https://www.python.org/downloads/) to run this application. 
+> **Note**: this will also download pip3, which you will see being used in the below commands.
 
-> bash $ sudo pip3 install django
+#### Linux
 
-Install psycopg2
+1. Install Django via pip3
+   ```bash
+   sudo pip3 install django
+   ```
+2. Install psycopg2
+   ```bash
+   sudo apt install libpq-dev postgresql
+   ```
+3. Clone the project.
+   ```bash
+   git clone https://github.com/Zachary-Harrison/cs3450-group10
+   ```
+4. Navigate to the project sub-folder.
+   ```bash
+   cd FrappuccinoShop/app/cs3450_group10
+   ```
+5. Run the server using the following command. (3000 is port, this is changable)
+   ```bash
+   python3 manage.py runserver 3000
+   ```
+6. In a web browser, navigate to http://localhost:3000/shop_app. If you changed the port number, be sure to replace "3000" with the right port number.
 
-For Linux servers, first run
 
-> bash $ sudo apt install libpq-dev postgresql
+#### MacOS
 
-then continue.
+1. Install Django via pip3
+   ```bash
+   sudo pip3 install django
+   ```
+2. Install psycopg2
+   ```bash
+   sudo pip3 install psycopg2
+   ```
+   ```bash
+   sudo pip3 install psycopg2-binary
+   ```
+3. Clone the project.
+   ```bash
+   git clone https://github.com/Zachary-Harrison/cs3450-group10
+   ```
+4. Navigate to the project sub-folder.
+   ```bash
+   cd FrappuccinoShop/app/cs3450_group10
+   ```
+5. Run the server using the following command. (3000 is port, this is changable)
+   ```bash
+   python3 manage.py runserver 3000
+   ```
+6. In a web browser, navigate to http://localhost:3000/shop_app. If you changed the port number, be sure to replace "3000" with the right port number.
 
-For MacOS start here
 
-> bash $ sudo pip3 install psycopg2
-
-> bash $ sudo pip3 install psycopg2-binary
-
-Navigate to the project sub-folder. 
-
-> bash $ cd app/cs3450_group10
-
-Run the server using the following command. (3000 is port, this is changable)
-
-> bash $ python3 manage.py runserver 3000
-
-In a web browser, navigate to http://localhost:3000/shop_app to view the app.
-3000 may be replaced with any port you wish to host the webserver on.
-
-<h3> Unit Testing </h3>
-<hr>
+### Unit Testing 
 
 In order to make sure that our database and functions were working properly unit tests were put in place. These unit tests build objects and put them into the database, then call them to make sure that they are functioning as intended. When you run your tests, the default behavior of the test utility is to find all the test cases (that is, subclasses of unittest.TestCase) in any file whose name begins with test, automatically build a test suite out of those test cases, and run that suite.Test discovery is based on the unittest module’s built-in test discovery. By default, this will discover tests in any file named test*.py under the current working directory.
 
@@ -83,10 +102,12 @@ You can specify particular tests to run by supplying any number of “test label
 
 To read more about the documentation, follow this link https://docs.djangoproject.com/en/4.1/topics/testing/overview/
 
-Run unit tests within the same directory as manage.py
-Run unit tests with the following command:
+First, navigate to the same directory as manage.py.
 
-> bash $ python3 manage.py test shop_app
+Then, run unit tests with the following command:
+```bash
+python3 manage.py test shop_app
+```
 
 By default our tests test for:
 Drink model
@@ -106,15 +127,16 @@ Account model
 - Account user type
 - Account balance
 
-
-
 ### System Testing Instructions
 
-<hr>
-<h4>Test if server is on correct port and open</h4>
-<h5>Linux and MacOS
 
-> bash $ sudo ss -tnlp || grep -m 1 -w -F '127.0.0.1:3000'
+#### Test if server is on correct port and open
+
+##### Linux and MacOS
+        
+```bash
+bash $ sudo ss -tnlp || grep -m 1 -w -F '127.0.0.1:3000'
+```
 
 This should result in one of the lines looking like so:
 
@@ -122,7 +144,9 @@ This should result in one of the lines looking like so:
 
 If this fails try:
 
-> bash $ sudo netstat -tnlp || grep -m 1 -w -F '127.0.0.1:3000'
+```bash
+sudo netstat -tnlp || grep -m 1 -w -F '127.0.0.1:3000'
+```
 
 This should be the result:
 
@@ -130,13 +154,9 @@ This should be the result:
 
 #### Check if server is serving files
 
-Open preferred web browser and type this into the search bar:
+Click [here](http://127.0.0.1:3000/shop_app/) and it should open the shop page.
 
-        "http://127.0.0.1:3000/shop_app/"
-
-Should result in the shop page.
-
-***
+---
 
 ### Deliverables
 
@@ -146,11 +166,9 @@ Should result in the shop page.
 - [High Fidelity Prototype](docs/HighFidelityProtoInstructions.md)
 
 
-***
+---
 
 ### Other Development Notes
-
-***
 
 - (Deployed) = Currently deployed in the working branch. Will receive updates and improvements as development and maintenance continue.
 - (Possible) = In theory, not currently planned to be put into development
